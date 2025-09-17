@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import ThemeToggle from '../../components/ui/ThemeToggle/ThemeToggle';
+import LoginButton from '../../components/ui/LoginButton/LoginButton';
 import Nav from '../Nav/Nav';
 
 const defaultMenu = [
@@ -44,12 +45,15 @@ export default function Header({ menuItems = defaultMenu }) {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <i className="fas fa-seedling" />
-            <span>AgroPrati</span>
+            <img src="/src/assets/folha.png" alt="Agro+Prati Logo" style={{ height: '32px', width: '32px' }} />
+            <span>Agro+Prati</span>
           </div>
 
           <Nav menuItems={menuItems} onNavigate={(href) => handleNavClick(href)} />
-          <ThemeToggle />
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <ThemeToggle />
+            <LoginButton />
+          </div>
         </div>
       </nav>
     </header>
