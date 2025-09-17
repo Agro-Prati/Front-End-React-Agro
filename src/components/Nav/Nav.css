@@ -31,7 +31,7 @@
 }
 /* Focus visible for keyboard users */
 .nav-link:focus {
-  outline: 3px solid rgba(0, 0, 0, 0.08);
+  outline: 3px solid var(--focus-color);
   outline-offset: 4px;
 }
 
@@ -46,7 +46,7 @@
 .nav-toggle span {
   width: 25px;
   height: 3px;
-  background: #213547;
+  background: var(--nav-toggle-color);
   transition: all 0.25s ease;
   display: block;
 }

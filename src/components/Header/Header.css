@@ -11,7 +11,7 @@
 }
 
 .header-scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--header-scrolled-bg);
   backdrop-filter: blur(6px);
 }
 
@@ -34,7 +34,7 @@
   gap: 10px;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #2e7d32; /* fallback */
+  color: var(--primary-color);
   cursor: pointer;
 }
 

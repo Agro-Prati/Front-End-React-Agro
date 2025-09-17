@@ -86,6 +86,7 @@
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
+  align-items: stretch;
 }
 
 .newsletter-form input {
@@ -95,6 +96,7 @@
   border-radius: 0.5rem;
   background: var(--bg-primary);
   color: var(--text-primary);
+  min-width: 0; /* Permite que o input encolha se necessário */
 }
 
 .newsletter-form input::placeholder {
@@ -102,13 +104,18 @@
 }
 
 .newsletter-form button {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.25rem;
   background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background 0.3s ease;
+  flex-shrink: 0; /* Impede que o botão encolha */
+  min-width: 50px; /* Largura mínima para o botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .newsletter-form button:hover {

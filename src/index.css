@@ -177,6 +177,15 @@ a {
   --border-radius: 8px;
   --transition: all 0.3s ease;
 
+  /* Header scrolled background */
+  --header-scrolled-bg: rgba(255, 255, 255, 0.95);
+
+  /* Nav toggle color */
+  --nav-toggle-color: #213547;
+
+  /* Focus color */
+  --focus-color: rgba(0, 0, 0, 0.08);
+
   /* Layout tokens */
   --container-max-width: 1200px;
 }
@@ -196,6 +205,15 @@ a {
   --border-color: #2c2c2c;
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
   --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.7);
+
+  /* Header scrolled background for dark theme */
+  --header-scrolled-bg: rgba(18, 18, 18, 0.95);
+
+  /* Nav toggle color for dark theme */
+  --nav-toggle-color: #ffffff;
+
+  /* Focus color for dark theme */
+  --focus-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Utilitário simples para alternância de tema via CSS (opcional) */
