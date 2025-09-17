@@ -49,14 +49,16 @@ export default function Header({ menuItems = defaultMenu }) {
     <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
       <nav className="navbar">
         <div className="nav-container">
-          <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img
-              src="/src/assets/folha.png"
-              alt="Agro+Prati Logo"
-              style={{ height: '32px', width: '32px' }}
-            />
-            <span>Agro+Prati</span>
-          </div>
+          <Link to="/" className="nav-logo-link">
+            <div className="nav-logo">
+              <img
+                src="/src/assets/folha.png"
+                alt="Agro+Prati Logo"
+                style={{ height: '32px', width: '32px' }}
+              />
+              <span>Agro+Prati</span>
+            </div>
+          </Link>
 
           <Nav menuItems={menuItems} onNavigate={(href) => handleNavClick(href)} />
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>

@@ -38,6 +38,16 @@
   cursor: pointer;
 }
 
+.nav-logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-logo-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav-logo i {
   font-size: 1.5rem;
 }

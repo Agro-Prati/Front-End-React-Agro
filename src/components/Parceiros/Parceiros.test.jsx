@@ -7,14 +7,28 @@ describe('Parceiros', () => {
   it('renders title and subtitle', () => {
     render(<Parceiros />);
     expect(screen.getByText('Nossos Parceiros')).toBeInTheDocument();
-    expect(screen.getByText('Trabalhamos com os melhores do mercado')).toBeInTheDocument();
+    expect(screen.getByText('Empresas e instituições que confiam em nossas soluções')).toBeInTheDocument();
   });
 
-  it('renders partner categories', () => {
+  it('renders partner logos', () => {
     render(<Parceiros />);
-    expect(screen.getByText('Fornecedores de Insumos')).toBeInTheDocument();
-    expect(screen.getByText('Equipamentos Agrícolas')).toBeInTheDocument();
-    expect(screen.getByText('Profissionais Técnicos')).toBeInTheDocument();
+    expect(screen.getByText('Sicredi')).toBeInTheDocument();
+    expect(screen.getByText('Bayer')).toBeInTheDocument();
+    expect(screen.getByText('Banco do Brasil')).toBeInTheDocument();
+    expect(screen.getByText('B3')).toBeInTheDocument();
+    expect(screen.getByText('Embrapa')).toBeInTheDocument();
+    expect(screen.getByText('UFPR')).toBeInTheDocument();
+    expect(screen.getByText('UTFPR')).toBeInTheDocument();
+  });
+
+  it('renders statistics section', () => {
+    render(<Parceiros />);
+    expect(screen.getByText('7+')).toBeInTheDocument();
+    expect(screen.getByText('Parceiros Estratégicos')).toBeInTheDocument();
+    expect(screen.getByText('15+')).toBeInTheDocument();
+    expect(screen.getByText('Anos de Parceria')).toBeInTheDocument();
+    expect(screen.getByText('100%')).toBeInTheDocument();
+    expect(screen.getByText('Confiança Institucional')).toBeInTheDocument();
   });
 
   it('renders CTA section', () => {
