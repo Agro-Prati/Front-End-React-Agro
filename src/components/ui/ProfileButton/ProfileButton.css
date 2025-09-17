@@ -1,0 +1,19 @@
+.profile-btn-link {
+  text-decoration: none;
+}
+
+.profile-btn {
+  background: var(--secondary-color);
+  color: var(--text-white);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile-btn:hover {
+  background: var(--secondary-dark);
+}

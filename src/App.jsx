@@ -1,46 +1,30 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import Sobre from './components/Sobre/Sobre';
-import Solucoes from './components/Solucoes/Solucoes';
-import Parceiros from './components/Parceiros/Parceiros';
-import ContactForm from './components/ContactForm/ContactForm';
-import Footer from './components/Footer/Footer';
-import Chatbot from './components/Chatbot/Chatbot';
+
+// Import pages
+import Home from './pages/Home';
+import Sobre from './pages/Sobre';
+import Solucoes from './pages/Solucoes';
+import Parceiros from './pages/Parceiros';
+import Contato from './pages/Contato';
+import Login from './pages/Login';
+import Cadastro from './pages/Cadastro';
+import Profile from './pages/Profile';
 
 function App() {
-  const handleOpenChat = () => {
-    // Placeholder: abrir chat (futuro componente Chatbot)
-    alert('Chat IA Agrícola será aberto em breve!');
-  };
-
-  const handleScrollTo = (sectionId) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <>
-      <Header />
-
-      <main>
-        <Hero onOpenChat={handleOpenChat} onScrollTo={handleScrollTo} />
-
-        <Sobre />
-
-        <Solucoes />
-
-        <Parceiros />
-
-        <ContactForm />
-      </main>
-
-      <Footer />
-
-      <Chatbot initialOpen={true} />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="/solucoes" element={<Solucoes />} />
+        <Route path="/parceiros" element={<Parceiros />} />
+        <Route path="/contato" element={<Contato />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Router>
   );
 }
 

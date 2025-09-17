@@ -1,3 +1,7 @@
+.login-btn-link {
+  text-decoration: none;
+}
+
 .login-btn {
   background: var(--primary-color);
   color: var(--text-white);

@@ -1,16 +1,21 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import Nav from './Nav';
 
 describe('Nav', () => {
   const items = [
-    { label: 'Home', href: '#home' },
-    { label: 'Sobre', href: '#sobre' },
+    { label: 'Home', href: '/' },
+    { label: 'Sobre', href: '/sobre' },
   ];
 
   it('renders menu items and toggles', () => {
-    render(<Nav menuItems={items} />);
+    render(
+      <MemoryRouter>
+        <Nav menuItems={items} />
+      </MemoryRouter>
+    );
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
     const toggle = screen.getByRole('button');
     expect(toggle).toBeInTheDocument();
@@ -21,7 +26,11 @@ describe('Nav', () => {
   });
 
   it('closes menu on link click', () => {
-    render(<Nav menuItems={items} />);
+    render(
+      <MemoryRouter>
+        <Nav menuItems={items} />
+      </MemoryRouter>
+    );
     const toggle = screen.getByRole('button');
     fireEvent.click(toggle);
     const link = screen.getByText(/Home/i);
@@ -31,7 +40,11 @@ describe('Nav', () => {
   });
 
   it('closes menu on Escape key', () => {
-    render(<Nav menuItems={items} />);
+    render(
+      <MemoryRouter>
+        <Nav menuItems={items} />
+      </MemoryRouter>
+    );
     const toggle = screen.getByRole('button');
     fireEvent.click(toggle);
     fireEvent.keyDown(document, { key: 'Escape' });

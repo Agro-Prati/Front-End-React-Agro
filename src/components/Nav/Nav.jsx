@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Nav.css';
 
 export default function Nav({ menuItems = [], onNavigate = () => {} }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef(null);
   const menuRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     function onKey(e) {
@@ -22,14 +24,7 @@ export default function Nav({ menuItems = [], onNavigate = () => {} }) {
   }
 
   function handleNavClick(href) {
-    const id = href.replace('#', '');
-    const el = document.getElementById(id);
-    const header = document.querySelector('.header');
-    const headerHeight = header ? header.offsetHeight : 80;
-    if (el) {
-      const top = el.offsetTop - headerHeight - 20;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+    // Para rotas, apenas fechar o menu mobile
     setOpen(false);
     onNavigate(href);
   }
@@ -39,20 +34,14 @@ export default function Nav({ menuItems = [], onNavigate = () => {} }) {
       <ul id="main-navigation" className={`nav-menu ${open ? 'active' : ''}`} ref={menuRef}>
         {menuItems.map((item) => (
           <li key={item.href}>
-            <a
+            <Link
               className="nav-link"
+              to={item.href}
               onClick={() => handleNavClick(item.href)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }
-              }}
-              tabIndex={0}
-              aria-current={window.location.hash === item.href ? 'page' : undefined}
+              aria-current={location.pathname === item.href ? 'page' : undefined}
             >
               {item.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
