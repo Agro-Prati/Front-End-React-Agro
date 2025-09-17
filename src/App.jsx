@@ -3,6 +3,9 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Sobre from './components/Sobre/Sobre';
 import Solucoes from './components/Solucoes/Solucoes';
+import Parceiros from './components/Parceiros/Parceiros';
+import ContactForm from './components/ContactForm/ContactForm';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const handleOpenChat = () => {
@@ -28,18 +31,12 @@ function App() {
 
         <Solucoes />
 
-        <section id="parceiros">
-          <div className="container">
-            <h2>Parceiros</h2>
-          </div>
-        </section>
+        <Parceiros />
 
-        <section id="contato">
-          <div className="container">
-            <h2>Contato</h2>
-          </div>
-        </section>
+        <ContactForm />
       </main>
+
+      <Footer />
     </>
   );
 }

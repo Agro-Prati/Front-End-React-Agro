@@ -1,0 +1,68 @@
+/* ContactForm Section */
+.contato {
+  padding: 80px 0;
+  background: var(--bg-light);
+}
+
+.contato-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contato-info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-item i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.info-item h4 {
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.info-item p {
+  color: var(--text-light);
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contato-form input,
+.contato-form textarea {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.contato-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contato-form button {
+  align-self: flex-start;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contato-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contato-form button {
+    align-self: stretch;
+  }
+}
