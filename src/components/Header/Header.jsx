@@ -1,0 +1,57 @@
+import React, { useEffect, useState } from 'react';
+import './Header.css';
+import ThemeToggle from '../../components/ui/ThemeToggle/ThemeToggle';
+import Nav from '../Nav/Nav';
+
+const defaultMenu = [
+  { label: 'Início', href: '#home' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Soluções', href: '#solucoes' },
+  { label: 'Parceiros', href: '#parceiros' },
+  { label: 'Contato', href: '#contato' },
+];
+
+export default function Header({ menuItems = defaultMenu }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 100);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Theme logic moved into ThemeToggle component
+
+  // Nav controla seu próprio estado (mobile open/close)
+
+  function handleNavClick(href) {
+    const id = href.replace('#', '');
+    const el = document.getElementById(id);
+    const header = document.querySelector('.header');
+    const headerHeight = header ? header.offsetHeight : 80;
+    if (el) {
+      const top = el.offsetTop - headerHeight - 20;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    // Nav é responsável por fechar o menu mobile quando necessário
+  }
+
+  return (
+    <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
+      <nav className="navbar">
+        <div className="nav-container">
+          <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <i className="fas fa-seedling" />
+            <span>AgroPrati</span>
+          </div>
+
+          <Nav menuItems={menuItems} onNavigate={(href) => handleNavClick(href)} />
+          <ThemeToggle />
+        </div>
+      </nav>
+    </header>
+  );
+}

@@ -1,33 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Header from './components/Header/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+
+      <main style={{ paddingTop: '100px' }}>
+        <section id="home" style={{ minHeight: '60vh', padding: '4rem 1rem' }}>
+          <div className="container">
+            <h1>Home (Hero placeholder)</h1>
+            <p>Conteúdo do Hero será migrado em seguida.</p>
+          </div>
+        </section>
+
+        <section id="sobre">
+          <div className="container">
+            <h2>Sobre</h2>
+            <p>Seção Sobre (a migrar)</p>
+          </div>
+        </section>
+
+        <section id="solucoes">
+          <div className="container">
+            <h2>Soluções</h2>
+          </div>
+        </section>
+
+        <section id="parceiros">
+          <div className="container">
+            <h2>Parceiros</h2>
+          </div>
+        </section>
+
+        <section id="contato">
+          <div className="container">
+            <h2>Contato</h2>
+          </div>
+        </section>
+      </main>
     </>
   )
 }
