@@ -16,4 +16,23 @@ describe('Nav', () => {
     const menu = screen.getByRole('navigation').querySelector('.nav-menu')
     expect(menu).toHaveClass('active')
   })
+
+  it('closes menu on link click', () => {
+    render(<Nav menuItems={items} />)
+    const toggle = screen.getByRole('button')
+    fireEvent.click(toggle)
+    const link = screen.getByText(/Home/i)
+    fireEvent.click(link)
+    const menu = screen.getByRole('navigation').querySelector('.nav-menu')
+    expect(menu).not.toHaveClass('active')
+  })
+
+  it('closes menu on Escape key', () => {
+    render(<Nav menuItems={items} />)
+    const toggle = screen.getByRole('button')
+    fireEvent.click(toggle)
+    fireEvent.keyDown(document, { key: 'Escape' })
+    const menu = screen.getByRole('navigation').querySelector('.nav-menu')
+    expect(menu).not.toHaveClass('active')
+  })
 })
