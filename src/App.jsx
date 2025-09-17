@@ -1,18 +1,26 @@
 import './App.css'
 import Header from './components/Header/Header'
+import Hero from './components/Hero/Hero'
 
 function App() {
+  const handleOpenChat = () => {
+    // Placeholder: abrir chat (futuro componente Chatbot)
+    alert('Chat IA Agrícola será aberto em breve!')
+  }
+
+  const handleScrollTo = (sectionId) => {
+    const el = document.getElementById(sectionId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <Header />
 
-      <main style={{ paddingTop: '100px' }}>
-        <section id="home" style={{ minHeight: '60vh', padding: '4rem 1rem' }}>
-          <div className="container">
-            <h1>Home (Hero placeholder)</h1>
-            <p>Conteúdo do Hero será migrado em seguida.</p>
-          </div>
-        </section>
+      <main>
+        <Hero onOpenChat={handleOpenChat} onScrollTo={handleScrollTo} />
 
         <section id="sobre">
           <div className="container">
