@@ -1,6 +1,8 @@
 import './App.css'
 import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
+import Sobre from './components/Sobre/Sobre'
+import Solucoes from './components/Solucoes/Solucoes'
 
 function App() {
   const handleOpenChat = () => {
@@ -22,18 +24,9 @@ function App() {
       <main>
         <Hero onOpenChat={handleOpenChat} onScrollTo={handleScrollTo} />
 
-        <section id="sobre">
-          <div className="container">
-            <h2>Sobre</h2>
-            <p>Seção Sobre (a migrar)</p>
-          </div>
-        </section>
+        <Sobre />
 
-        <section id="solucoes">
-          <div className="container">
-            <h2>Soluções</h2>
-          </div>
-        </section>
+        <Solucoes />
 
         <section id="parceiros">
           <div className="container">
