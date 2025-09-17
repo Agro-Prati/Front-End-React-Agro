@@ -33,6 +33,7 @@ const ContactForm = ({ onSubmit }) => {
         </div>
         <div className="contato-content">
           <div className="contato-info">
+            <h3>Informações de Contato</h3>
             <div className="info-item">
               <i className="fas fa-phone"></i>
               <div>

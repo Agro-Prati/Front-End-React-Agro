@@ -6,6 +6,7 @@ import Solucoes from './components/Solucoes/Solucoes';
 import Parceiros from './components/Parceiros/Parceiros';
 import ContactForm from './components/ContactForm/ContactForm';
 import Footer from './components/Footer/Footer';
+import Chatbot from './components/Chatbot/Chatbot';
 
 function App() {
   const handleOpenChat = () => {
@@ -37,6 +38,8 @@ function App() {
       </main>
 
       <Footer />
+
+      <Chatbot />
     </>
   );
 }

@@ -12,6 +12,7 @@ describe('ContactForm', () => {
 
   it('renders contact info', () => {
     render(<ContactForm />);
+    expect(screen.getByText('Informações de Contato')).toBeInTheDocument();
     expect(screen.getByText('Telefone')).toBeInTheDocument();
     expect(screen.getByText('Email')).toBeInTheDocument();
     expect(screen.getByText('Endereço')).toBeInTheDocument();
