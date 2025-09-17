@@ -39,7 +39,7 @@ function App() {
 
       <Footer />
 
-      <Chatbot />
+      <Chatbot initialOpen={true} />
     </>
   );
 }

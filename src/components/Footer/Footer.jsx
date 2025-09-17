@@ -8,7 +8,11 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <i className="fas fa-seedling"></i>
+              <img
+                src="/src/assets/folha.png"
+                alt="Agro+Prati Logo"
+                style={{ height: '32px', width: '32px' }}
+              />
               <span>Agro+Prati</span>
             </div>
             <p>Revolucionando o agronegócio com inteligência artificial e tecnologia de ponta.</p>

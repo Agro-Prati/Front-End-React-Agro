@@ -241,7 +241,7 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
 
       {/* Toggle Button */}
       <button
-        className="chatbot-toggle"
+        className={`chatbot-toggle ${isOpen ? 'hidden' : ''}`}
         onClick={toggleChat}
         aria-label={isOpen ? 'Fechar chat' : 'Abrir chat'}
       >
