@@ -16,11 +16,13 @@ const Hero = ({ onOpenChat, onScrollTo }) => {
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            Transforme sua Agricultura com <span className="highlight">Inteligência Artificial</span>
+            Transforme sua Agricultura com{' '}
+            <span className="highlight">Inteligência Artificial</span>
           </h1>
           <p className="hero-description">
-            A Agro+Prati é a primeira plataforma que conecta agricultores a soluções inteligentes através de IA.
-            Obtenha orientações especializadas sobre plantio, manejo e conecte-se com os melhores parceiros do agronegócio.
+            A Agro+Prati é a primeira plataforma que conecta agricultores a soluções inteligentes
+            através de IA. Obtenha orientações especializadas sobre plantio, manejo e conecte-se com
+            os melhores parceiros do agronegócio.
           </p>
           <div className="hero-stats">
             <div className="stat">

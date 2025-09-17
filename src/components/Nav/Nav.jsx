@@ -42,7 +42,12 @@ export default function Nav({ menuItems = [], onNavigate = () => {} }) {
             <a
               className="nav-link"
               onClick={() => handleNavClick(item.href)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleNavClick(item.href); } }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }
+              }}
               tabIndex={0}
               aria-current={window.location.hash === item.href ? 'page' : undefined}
             >

@@ -5,20 +5,55 @@
   margin: 0;
 }
 
-.nav-menu li { list-style: none; }
+.nav-menu li {
+  list-style: none;
+}
 
-.nav-link { text-decoration: none; color: inherit; font-weight: 600; cursor: pointer; position: relative; }
-.nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: var(--primary-color); transition: all 0.25s ease; }
-.nav-link:hover::after { width: 100%; }
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.25s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
 /* Focus visible for keyboard users */
 .nav-link:focus {
-  outline: 3px solid rgba(0,0,0,0.08);
+  outline: 3px solid rgba(0, 0, 0, 0.08);
   outline-offset: 4px;
 }
 
-.nav-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; border: none; background: transparent; }
-.nav-toggle span { width: 25px; height: 3px; background: #213547; transition: all 0.25s ease; display: block; }
-.nav-toggle:focus { outline: 3px solid rgba(0,0,0,0.08); outline-offset: 4px; }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+.nav-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #213547;
+  transition: all 0.25s ease;
+  display: block;
+}
+.nav-toggle:focus {
+  outline: 3px solid rgba(0, 0, 0, 0.08);
+  outline-offset: 4px;
+}
 
 @media (max-width: 900px) {
   .nav-menu {
@@ -28,16 +63,23 @@
     background: var(--bg-white, #fff);
     padding: 1rem 1.25rem;
     border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     flex-direction: column;
     gap: 0.5rem;
     display: none;
   }
 
-  .nav-menu.active { display: flex; }
+  .nav-menu.active {
+    display: flex;
+  }
 
-  .nav-toggle { display: flex; }
+  .nav-toggle {
+    display: flex;
+  }
 }
 
 /* Ensure visible focus inside mobile menu */
-.nav-menu .nav-link:focus { background: rgba(0,0,0,0.02); border-radius: 6px; }
+.nav-menu .nav-link:focus {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 6px;
+}

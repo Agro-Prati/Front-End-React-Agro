@@ -45,7 +45,11 @@ export default function Header({ menuItems = defaultMenu }) {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src="/src/assets/folha.png" alt="Agro+Prati Logo" style={{ height: '32px', width: '32px' }} />
+            <img
+              src="/src/assets/folha.png"
+              alt="Agro+Prati Logo"
+              style={{ height: '32px', width: '32px' }}
+            />
             <span>Agro+Prati</span>
           </div>
 

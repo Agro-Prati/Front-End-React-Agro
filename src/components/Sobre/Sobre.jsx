@@ -18,8 +18,8 @@ const Sobre = () => {
             </p>
             <h3>Nossa Visão</h3>
             <p>
-              Ser a principal plataforma de soluções inteligentes para o agronegócio,
-              transformando a agricultura através da tecnologia.
+              Ser a principal plataforma de soluções inteligentes para o agronegócio, transformando
+              a agricultura através da tecnologia.
             </p>
             <div className="stats">
               <div className="stat-item">

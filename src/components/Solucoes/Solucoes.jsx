@@ -6,13 +6,14 @@ const Solucoes = ({ items }) => {
     {
       icon: 'fas fa-robot',
       title: 'Chatbot Inteligente',
-      description: 'IA especializada que responde dúvidas sobre plantio, manejo, pragas e doenças 24 horas por dia.',
+      description:
+        'IA especializada que responde dúvidas sobre plantio, manejo, pragas e doenças 24 horas por dia.',
       features: [
         'Orientações de cultivo',
         'Diagnóstico de problemas',
         'Cronogramas de plantio',
-        'Dicas de manejo'
-      ]
+        'Dicas de manejo',
+      ],
     },
     {
       icon: 'fas fa-users',
@@ -22,20 +23,16 @@ const Solucoes = ({ items }) => {
         'Engenheiros agrônomos',
         'Técnicos especializados',
         'Consultores agrícolas',
-        'Veterinários'
-      ]
+        'Veterinários',
+      ],
     },
     {
       icon: 'fas fa-shopping-cart',
       title: 'Marketplace Integrado',
-      description: 'Acesso direto a fornecedores confiáveis de insumos, medicamentos e equipamentos.',
-      features: [
-        'Defensivos agrícolas',
-        'Fertilizantes',
-        'Sementes certificadas',
-        'Equipamentos'
-      ]
-    }
+      description:
+        'Acesso direto a fornecedores confiáveis de insumos, medicamentos e equipamentos.',
+      features: ['Defensivos agrícolas', 'Fertilizantes', 'Sementes certificadas', 'Equipamentos'],
+    },
   ];
 
   const solutions = items || defaultItems;
