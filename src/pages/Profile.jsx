@@ -1,26 +1,74 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
+import { useAuth } from '../contexts/useAuth';
 
 function Profile() {
-  // Dados hard coded para demonstração
-  const [userProfile] = useState({
-    nome: 'João Silva',
-    tipo: 'Produtor Rural',
-    localizacao: 'São Paulo, SP',
-    areaPlantada: 150, // hectares
-    experiencia: 12, // anos
-    especialidades: ['Soja', 'Milho', 'Café'],
-    certificacoes: ['Agricultura Sustentável', 'Boas Práticas Agrícolas']
+  const { user } = useAuth();
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editFormData, setEditFormData] = useState({
+    name: user?.name || '',
+    phone: user?.phone || '',
+    city: user?.city || '',
+    state: user?.state || '',
+    description: user?.description || ''
   });
 
+  // Mapear tipo de usuário para texto amigável
+  const getTipoUsuarioText = (tipo) => {
+    const tipos = {
+      'AGRICULTOR': 'Agricultor',
+      'AGRONOMO': 'Agrônomo',
+      'VETERINARIO': 'Veterinário',
+      'ZOOTECNISTA': 'Zootecnista',
+      'ESTUDANTE': 'Estudante'
+    };
+    return tipos[tipo] || tipo;
+  };
+
+  // Formatar localização (cidade, estado)
+  const getLocalizacao = () => {
+    if (user?.city && user?.state) {
+      return `${user.city}, ${user.state}`;
+    }
+    if (user?.city) return user.city;
+    if (user?.state) return user.state;
+    return 'Não informado';
+  };
+
+  const handleEditClick = () => {
+    setEditFormData({
+      name: user?.name || '',
+      phone: user?.phone || '',
+      city: user?.city || '',
+      state: user?.state || '',
+      description: user?.description || ''
+    });
+    setShowEditModal(true);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    // TODO: Implementar atualização no backend
+    console.log('Dados atualizados:', editFormData);
+    alert('Funcionalidade de atualização será implementada em breve!');
+    setShowEditModal(false);
+  };
+
   const [metricas] = useState({
-    produtividadeAtual: 85, // %
-    areaUtilizada: 120, // hectares
-    economiaAgua: 25, // %
-    reducaoAgrotoxicos: 40, // %
+    produtividadeAtual: 85,
+    areaUtilizada: 120,
+    economiaAgua: 25,
+    reducaoAgrotoxicos: 40,
     certificacoesObtidas: 3
   });
 
@@ -122,49 +170,61 @@ function Profile() {
               fontSize: '3rem',
               fontWeight: 'bold'
             }}>
-              {userProfile.nome.charAt(0)}
+              {user?.name?.charAt(0).toUpperCase() || 'U'}
             </div>
 
             <div style={{ flex: 1 }}>
               <h1 style={{ color: 'var(--text-dark)', margin: '0 0 0.5rem 0', fontSize: '2rem' }}>
-                {userProfile.nome}
+                {user?.name || 'Usuário'}
               </h1>
               <p style={{ color: 'var(--primary-color)', fontWeight: '600', margin: '0 0 1rem 0', fontSize: '1.1rem' }}>
-                {userProfile.tipo}
+                {getTipoUsuarioText(user?.type)}
               </p>
+              
+              {/* Descrição/Bio do usuário */}
+              {user?.description && (
+                <p style={{ color: 'var(--text-dark)', margin: '0 0 1rem 0', fontSize: '0.95rem', fontStyle: 'italic' }}>
+                  "{user.description}"
+                </p>
+              )}
+
               <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
                 <div>
-                  <span style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Localização</span>
+                  <span style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Email</span>
                   <p style={{ color: 'var(--text-dark)', margin: '0.25rem 0', fontWeight: '500' }}>
-                    {userProfile.localizacao}
+                    {user?.email || 'Não informado'}
                   </p>
                 </div>
-                <div>
-                  <span style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Área Plantada</span>
-                  <p style={{ color: 'var(--text-dark)', margin: '0.25rem 0', fontWeight: '500' }}>
-                    {userProfile.areaPlantada} hectares
-                  </p>
-                </div>
-                <div>
-                  <span style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Experiência</span>
-                  <p style={{ color: 'var(--text-dark)', margin: '0.25rem 0', fontWeight: '500' }}>
-                    {userProfile.experiencia} anos
-                  </p>
-                </div>
+                {user?.phone && (
+                  <div>
+                    <span style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Telefone</span>
+                    <p style={{ color: 'var(--text-dark)', margin: '0.25rem 0', fontWeight: '500' }}>
+                      {user.phone}
+                    </p>
+                  </div>
+                )}
+                {(user?.city || user?.state) && (
+                  <div>
+                    <span style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Localização</span>
+                    <p style={{ color: 'var(--text-dark)', margin: '0.25rem 0', fontWeight: '500' }}>
+                      {getLocalizacao()}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <Link
-                to="/editar-perfil"
+              <button
+                onClick={handleEditClick}
                 style={{
                   padding: '0.75rem 1.5rem',
                   background: 'transparent',
                   border: '2px solid var(--primary-color)',
                   color: 'var(--primary-color)',
-                  textDecoration: 'none',
                   borderRadius: '6px',
                   fontWeight: '600',
+                  cursor: 'pointer',
                   transition: 'all 0.3s ease'
                 }}
                 onMouseOver={(e) => {
@@ -177,7 +237,7 @@ function Profile() {
                 }}
               >
                 Editar Perfil
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -444,79 +504,180 @@ function Profile() {
             </div>
           </div>
 
-          {/* Especialidades e Certificações */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '2rem'
-          }}>
-
-            <div style={{
-              background: 'var(--bg-white)',
-              padding: '1.5rem',
-              borderRadius: '12px',
-              boxShadow: 'var(--shadow)'
-            }}>
-              <h3 style={{ color: 'var(--text-dark)', margin: '0 0 1rem 0', fontSize: '1.2rem' }}>
-                🌾 Especialidades
-              </h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {userProfile.especialidades.map((especialidade, index) => (
-                  <span key={index} style={{
-                    padding: '0.5rem 1rem',
-                    background: 'var(--primary-light)',
-                    color: 'var(--primary-color)',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem',
-                    fontWeight: '500'
-                  }}>
-                    {especialidade}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div style={{
-              background: 'var(--bg-white)',
-              padding: '1.5rem',
-              borderRadius: '12px',
-              boxShadow: 'var(--shadow)'
-            }}>
-              <h3 style={{ color: 'var(--text-dark)', margin: '0 0 1rem 0', fontSize: '1.2rem' }}>
-                🏆 Certificações
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {userProfile.certificacoes.map((certificacao, index) => (
-                  <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    padding: '0.75rem',
-                    background: 'var(--bg-light)',
-                    borderRadius: '8px'
-                  }}>
-                    <div style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '50%',
-                      background: 'var(--success-color)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1rem'
-                    }}>
-                      ✓
-                    </div>
-                    <span style={{ color: 'var(--text-dark)', fontSize: '0.9rem', fontWeight: '500' }}>
-                      {certificacao}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </main>
+
+      {/* Modal de Edição */}
+      {showEditModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}
+        onClick={() => setShowEditModal(false)}
+        >
+          <div style={{
+            background: 'white',
+            padding: '2rem',
+            borderRadius: '12px',
+            maxWidth: '500px',
+            width: '90%',
+            maxHeight: '90vh',
+            overflowY: 'auto'
+          }}
+          onClick={(e) => e.stopPropagation()}
+          >
+            <h2 style={{ color: 'var(--text-dark)', margin: '0 0 1.5rem 0' }}>
+              Editar Perfil
+            </h2>
+
+            <form onSubmit={handleEditSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-dark)', fontWeight: '500' }}>
+                  Nome
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={editFormData.name}
+                  onChange={handleEditChange}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    fontSize: '1rem'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-dark)', fontWeight: '500' }}>
+                  Telefone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={editFormData.phone}
+                  onChange={handleEditChange}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    fontSize: '1rem'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-dark)', fontWeight: '500' }}>
+                  Cidade
+                </label>
+                <input
+                  type="text"
+                  name="city"
+                  value={editFormData.city}
+                  onChange={handleEditChange}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    fontSize: '1rem'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-dark)', fontWeight: '500' }}>
+                  Estado (UF)
+                </label>
+                <input
+                  type="text"
+                  name="state"
+                  value={editFormData.state}
+                  onChange={handleEditChange}
+                  maxLength="2"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    fontSize: '1rem',
+                    textTransform: 'uppercase'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-dark)', fontWeight: '500' }}>
+                  Descrição/Bio
+                </label>
+                <textarea
+                  name="description"
+                  value={editFormData.description}
+                  onChange={handleEditChange}
+                  rows="4"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    fontSize: '1rem',
+                    resize: 'vertical'
+                  }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                <button
+                  type="submit"
+                  style={{
+                    flex: 1,
+                    padding: '0.75rem',
+                    background: 'var(--primary-color)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Salvar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowEditModal(false)}
+                  style={{
+                    flex: 1,
+                    padding: '0.75rem',
+                    background: 'transparent',
+                    color: 'var(--text-light)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       <Footer />
       <Chatbot />
     </>

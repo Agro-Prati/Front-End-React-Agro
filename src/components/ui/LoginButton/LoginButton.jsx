@@ -4,13 +4,8 @@ import './LoginButton.css';
 import { useAuth } from '../../../contexts/useAuth';
 
 export default function LoginButton({ onClick = () => {}, label = 'Entrar' }) {
-  const { isAuthenticated, user, token } = useAuth();
-  
-  console.log('LoginButton - isAuthenticated:', isAuthenticated()); // Debug
-  console.log('LoginButton - user:', user); // Debug
-  console.log('LoginButton - token:', token); // Debug
+  const { isAuthenticated } = useAuth();
 
-  // Se o usuário estiver autenticado, não mostra o botão de login
   if (isAuthenticated()) {
     return null;
   }

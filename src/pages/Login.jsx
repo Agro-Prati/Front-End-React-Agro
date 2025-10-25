@@ -6,7 +6,7 @@ import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
 import { useAuth } from '../contexts/useAuth';
 import authService from '../services/authService';
-import api from '../services/api';
+
 
 function Login() {
   const navigate = useNavigate();
@@ -36,15 +36,10 @@ function Login() {
 
     try {
       const result = await login(formData);
-      
-      console.log('Resultado do login:', result); // Debug
 
       if (result.success) {
-        console.log('Login bem-sucedido! Token:', result.data?.token); // Debug
-        console.log('Usuário:', result.data?.user); // Debug
-        
         alert('Login realizado com sucesso!');
-        navigate('/'); // Redireciona para a home
+        navigate('/');
       } else {
         setError(result.error);
       }
@@ -61,29 +56,18 @@ function Login() {
     setError('');
 
     try {
-      console.log('Google credential response:', credentialResponse);
-      
-      // Enviar ID Token para o backend
       const response = await authService.loginWithGoogle(credentialResponse.credential);
-      
-      console.log('Backend response:', response);
 
-      // Backend retorna accessToken (não token)
       const token = response.accessToken || response.token;
       const user = response.user;
 
       if (token && user) {
-        // Salvar token e usuário no localStorage
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         
-        console.log('Login com Google bem-sucedido!');
         alert('Login com Google realizado com sucesso!');
-        
-        // Recarregar a página para atualizar o contexto
         window.location.href = '/';
       } else {
-        console.error('Resposta incompleta:', response);
         setError('Resposta inválida do servidor');
       }
     } catch (err) {
@@ -95,7 +79,6 @@ function Login() {
   };
 
   const handleGoogleLoginError = () => {
-    console.error('Erro no login do Google');
     setError('Erro ao fazer login com Google. Tente novamente.');
   };
 

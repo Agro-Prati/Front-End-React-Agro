@@ -4,14 +4,9 @@ import './ProfileButton.css';
 import { useAuth } from '../../../contexts/useAuth';
 
 export default function ProfileButton({ onClick = () => {} }) {
-  const { user, isAuthenticated, logout, token } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   const [showMenu, setShowMenu] = useState(false);
 
-  console.log('ProfileButton - isAuthenticated:', isAuthenticated()); // Debug
-  console.log('ProfileButton - user:', user); // Debug
-  console.log('ProfileButton - token:', token); // Debug
-
-  // Se o usuário não estiver autenticado, não mostra o botão
   if (!isAuthenticated()) {
     return null;
   }

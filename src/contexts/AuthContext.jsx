@@ -44,17 +44,12 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authService.register(userData);
       
-      console.log('Resposta do backend (registro):', JSON.stringify(response, null, 2)); // Debug
-      
-      // A resposta do axios vem em response.data
       const { token, user } = response.data || response;
       
       if (!token || !user) {
-        console.error('Token ou usuário não encontrado na resposta do registro!');
         return { success: false, error: 'Resposta inválida do servidor' };
       }
       
-      // Salva o token e dados do usuário
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
       
@@ -76,64 +71,45 @@ export const AuthProvider = ({ children }) => {
    */
   const login = async (credentialsOrData) => {
     try {
-      // Se tem userData direto (OAuth2), apenas atualiza o estado
       if (!credentialsOrData.password) {
-        console.log('✅ [AuthContext] Login OAuth2 - dados recebidos:', credentialsOrData);
-        
-        // Salva apenas os dados do usuário (cookie já está definido pelo backend)
         localStorage.setItem('user', JSON.stringify(credentialsOrData));
         setUser(credentialsOrData);
         
         return { success: true, data: { user: credentialsOrData } };
       }
 
-      // Login com credentials (email/password)
       const response = await authService.login(credentialsOrData);
       
-      console.log('Resposta do backend (completa):', JSON.stringify(response, null, 2)); // Debug
-      
-      // O backend retorna accessToken, não token
       const accessToken = response.accessToken || response.token;
       const userData = response.user;
       
       if (!accessToken) {
-        console.error('Token não encontrado na resposta!');
         return { success: false, error: 'Token não recebido do servidor' };
       }
       
-      // Se não tiver dados do usuário na resposta, extrair do token JWT
       let userInfo = userData;
       if (!userInfo) {
-        // Decodifica o JWT para pegar o email (sub)
         try {
           const payload = JSON.parse(atob(accessToken.split('.')[1]));
           userInfo = {
             email: payload.sub,
             name: payload.name || payload.sub.split('@')[0],
           };
-          console.log('Usuário extraído do token:', userInfo);
         } catch (e) {
           console.error('Erro ao decodificar token:', e);
           userInfo = { email: credentialsOrData.email };
         }
       }
       
-      // Salva o token e dados do usuário
       localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(userInfo));
-      
-      console.log('Token salvo:', accessToken); // Debug
-      console.log('User salvo:', userInfo); // Debug
       
       setToken(accessToken);
       setUser(userInfo);
       
-      console.log('Estado atualizado - token:', accessToken); // Debug
-      console.log('Estado atualizado - user:', userInfo); // Debug
-      
       return { success: true, data: { token: accessToken, user: userInfo } };
     } catch (error) {
-      console.error('Erro no login (AuthContext):', error); // Debug
+      console.error('Erro no login:', error);
       const errorMessage = error.response?.data?.message || 
                           error.response?.data?.error ||
                           'Email ou senha incorretos.';
