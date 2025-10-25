@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
+import { useAuth } from '../contexts/useAuth';
 
 function Cadastro() {
+  const navigate = useNavigate();
+  const { register } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -65,13 +69,31 @@ function Cadastro() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // TODO: Implementar lógica de cadastro
-      console.log('Cadastro data:', formData);
-      alert('Conta criada com sucesso! (Funcionalidade completa será implementada em breve)');
+      setLoading(true);
+      setErrors({});
+
+      try {
+        const result = await register(formData);
+
+        if (result.success) {
+          alert('Conta criada com sucesso! Você já está logado.');
+          navigate('/'); // Redireciona para a home após cadastro
+        } else {
+          // Exibe erro do backend
+          setErrors({ submit: result.error });
+          alert(result.error);
+        }
+      } catch (error) {
+        console.error('Erro ao criar conta:', error);
+        setErrors({ submit: 'Erro inesperado ao criar conta. Tente novamente.' });
+        alert('Erro inesperado ao criar conta. Tente novamente.');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -329,24 +351,37 @@ function Cadastro() {
 
             <button
               type="submit"
+              disabled={loading}
               style={{
                 width: '100%',
                 padding: '0.75rem',
-                background: 'var(--primary-color)',
+                background: loading ? '#ccc' : 'var(--primary-color)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '6px',
                 fontSize: '1rem',
                 fontWeight: '600',
-                cursor: 'pointer',
+                cursor: loading ? 'not-allowed' : 'pointer',
                 transition: 'background 0.3s ease',
                 marginTop: '1rem'
               }}
-              onMouseOver={(e) => e.target.style.background = 'var(--primary-dark)'}
-              onMouseOut={(e) => e.target.style.background = 'var(--primary-color)'}
+              onMouseOver={(e) => !loading && (e.target.style.background = 'var(--primary-dark)')}
+              onMouseOut={(e) => !loading && (e.target.style.background = 'var(--primary-color)')}
             >
-              Criar Conta
+              {loading ? 'Criando conta...' : 'Criar Conta'}
             </button>
+
+            {errors.submit && (
+              <div style={{ 
+                padding: '0.75rem', 
+                background: '#ffebee', 
+                color: '#c62828', 
+                borderRadius: '6px',
+                fontSize: '0.9rem'
+              }}>
+                {errors.submit}
+              </div>
+            )}
           </form>
 
           <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>

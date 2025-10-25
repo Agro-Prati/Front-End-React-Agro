@@ -25,3 +25,10 @@ dist-ssr
 
 TRANSFER_PROJECT_AGRO.md
 coverage
+
+# Environment variables
+.env
+.env.*.local
+
+# Ignore all
+git add . && git reset *.md

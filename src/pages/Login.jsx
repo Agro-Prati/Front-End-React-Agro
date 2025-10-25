@@ -1,10 +1,18 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
+import { useAuth } from '../contexts/useAuth';
+import authService from '../services/authService';
+import api from '../services/api';
 
 function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     senha: '',
@@ -17,13 +25,78 @@ function Login() {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    // Limpa erro quando usuário começa a digitar
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implementar lógica de login
-    console.log('Login data:', formData);
-    alert('Funcionalidade de login será implementada em breve!');
+    setLoading(true);
+    setError('');
+
+    try {
+      const result = await login(formData);
+      
+      console.log('Resultado do login:', result); // Debug
+
+      if (result.success) {
+        console.log('Login bem-sucedido! Token:', result.data?.token); // Debug
+        console.log('Usuário:', result.data?.user); // Debug
+        
+        alert('Login realizado com sucesso!');
+        navigate('/'); // Redireciona para a home
+      } else {
+        setError(result.error);
+      }
+    } catch (err) {
+      console.error('Erro ao fazer login:', err);
+      setError('Erro inesperado ao fazer login. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLoginSuccess = async (credentialResponse) => {
+    setLoading(true);
+    setError('');
+
+    try {
+      console.log('Google credential response:', credentialResponse);
+      
+      // Enviar ID Token para o backend
+      const response = await authService.loginWithGoogle(credentialResponse.credential);
+      
+      console.log('Backend response:', response);
+
+      // Backend retorna accessToken (não token)
+      const token = response.accessToken || response.token;
+      const user = response.user;
+
+      if (token && user) {
+        // Salvar token e usuário no localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        
+        console.log('Login com Google bem-sucedido!');
+        alert('Login com Google realizado com sucesso!');
+        
+        // Recarregar a página para atualizar o contexto
+        window.location.href = '/';
+      } else {
+        console.error('Resposta incompleta:', response);
+        setError('Resposta inválida do servidor');
+      }
+    } catch (err) {
+      console.error('Erro ao fazer login com Google:', err);
+      setError(err.response?.data?.message || 'Erro ao fazer login com Google. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLoginError = () => {
+    console.error('Erro no login do Google');
+    setError('Erro ao fazer login com Google. Tente novamente.');
   };
 
   return (
@@ -147,24 +220,62 @@ function Login() {
 
             <button
               type="submit"
+              disabled={loading}
               style={{
                 width: '100%',
                 padding: '0.75rem',
-                background: 'var(--primary-color)',
+                background: loading ? '#ccc' : 'var(--primary-color)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '6px',
                 fontSize: '1rem',
                 fontWeight: '600',
-                cursor: 'pointer',
+                cursor: loading ? 'not-allowed' : 'pointer',
                 transition: 'background 0.3s ease'
               }}
-              onMouseOver={(e) => e.target.style.background = 'var(--primary-dark)'}
-              onMouseOut={(e) => e.target.style.background = 'var(--primary-color)'}
+              onMouseOver={(e) => !loading && (e.target.style.background = 'var(--primary-dark)')}
+              onMouseOut={(e) => !loading && (e.target.style.background = 'var(--primary-color)')}
             >
-              Entrar
+              {loading ? 'Entrando...' : 'Entrar'}
             </button>
+
+            {error && (
+              <div style={{ 
+                padding: '0.75rem', 
+                background: '#ffebee', 
+                color: '#c62828', 
+                borderRadius: '6px',
+                fontSize: '0.9rem',
+                marginTop: '0.5rem'
+              }}>
+                {error}
+              </div>
+            )}
           </form>
+
+          <div style={{ textAlign: 'center', margin: '1.5rem 0', color: 'var(--text-light)' }}>
+            <span style={{ background: 'var(--bg-white)', padding: '0 1rem', position: 'relative', zIndex: 1 }}>
+              ou
+            </span>
+            <div style={{ height: '1px', background: 'var(--border-color)', marginTop: '-0.7rem', position: 'relative', zIndex: 0 }}></div>
+          </div>
+
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center',
+            padding: '0.5rem'
+          }}>
+            <GoogleLogin
+              onSuccess={handleGoogleLoginSuccess}
+              onError={handleGoogleLoginError}
+              useOneTap
+              text="continue_with"
+              shape="rectangular"
+              size="large"
+              width="100%"
+            />
+          </div>
 
           <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
             <p style={{ color: 'var(--text-light)', margin: '0 0 1rem 0' }}>

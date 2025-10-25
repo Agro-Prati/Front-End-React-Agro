@@ -1,6 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
+// Import contexts
+import { AuthProvider } from './contexts/AuthContext';
+
+// Import components
+import ProtectedRoute from './components/ProtectedRoute';
+
 // Import pages
 import Home from './pages/Home';
 import Sobre from './pages/Sobre';
@@ -14,16 +20,27 @@ import Profile from './pages/Profile';
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/solucoes" element={<Solucoes />} />
-        <Route path="/parceiros" element={<Parceiros />} />
-        <Route path="/contato" element={<Contato />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/solucoes" element={<Solucoes />} />
+          <Route path="/parceiros" element={<Parceiros />} />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          
+          {/* Rotas protegidas - requerem autenticação */}
+          <Route 
+            path="/profile" 
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } 
+          />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
