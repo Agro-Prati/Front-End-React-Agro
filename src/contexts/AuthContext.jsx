@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Limpa dados inválidos primeiro
     cleanInvalidData();
-    
+
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
 
@@ -43,24 +43,25 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       const response = await authService.register(userData);
-      
+
       const { token, user } = response.data || response;
-      
+
       if (!token || !user) {
         return { success: false, error: 'Resposta inválida do servidor' };
       }
-      
+
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      
+
       setToken(token);
       setUser(user);
-      
+
       return { success: true, data: { token, user } };
     } catch (error) {
-      const errorMessage = error.response?.data?.message || 
-                          error.response?.data?.error ||
-                          'Erro ao criar conta. Tente novamente.';
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Erro ao criar conta. Tente novamente.';
       return { success: false, error: errorMessage };
     }
   };
@@ -74,19 +75,19 @@ export const AuthProvider = ({ children }) => {
       if (!credentialsOrData.password) {
         localStorage.setItem('user', JSON.stringify(credentialsOrData));
         setUser(credentialsOrData);
-        
+
         return { success: true, data: { user: credentialsOrData } };
       }
 
       const response = await authService.login(credentialsOrData);
-      
+
       const accessToken = response.accessToken || response.token;
       const userData = response.user;
-      
+
       if (!accessToken) {
         return { success: false, error: 'Token não recebido do servidor' };
       }
-      
+
       let userInfo = userData;
       if (!userInfo) {
         try {
@@ -100,19 +101,20 @@ export const AuthProvider = ({ children }) => {
           userInfo = { email: credentialsOrData.email };
         }
       }
-      
+
       localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(userInfo));
-      
+
       setToken(accessToken);
       setUser(userInfo);
-      
+
       return { success: true, data: { token: accessToken, user: userInfo } };
     } catch (error) {
       console.error('Erro no login:', error);
-      const errorMessage = error.response?.data?.message || 
-                          error.response?.data?.error ||
-                          'Email ou senha incorretos.';
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Email ou senha incorretos.';
       return { success: false, error: errorMessage };
     }
   };

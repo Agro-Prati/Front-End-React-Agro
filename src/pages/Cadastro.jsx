@@ -16,21 +16,21 @@ function Cadastro() {
     confirmarSenha: '',
     telefone: '',
     tipoUsuario: 'produtor',
-    termos: false
+    termos: false,
   });
 
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
 
     // Limpar erro quando usuário começa a digitar
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
@@ -100,22 +100,26 @@ function Cadastro() {
   return (
     <>
       <Header />
-      <main style={{
-        minHeight: '70vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem',
-        background: 'var(--bg-light)'
-      }}>
-        <div style={{
-          background: 'var(--bg-white)',
+      <main
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: '2rem',
-          borderRadius: '12px',
-          boxShadow: 'var(--shadow)',
-          width: '100%',
-          maxWidth: '500px'
-        }}>
+          background: 'var(--bg-light)',
+        }}
+      >
+        <div
+          style={{
+            background: 'var(--bg-white)',
+            padding: '2rem',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow)',
+            width: '100%',
+            maxWidth: '500px',
+          }}
+        >
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <img
               src="/src/assets/folha.png"
@@ -128,7 +132,10 @@ function Cadastro() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+          >
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
                 <label
@@ -137,7 +144,7 @@ function Cadastro() {
                     display: 'block',
                     marginBottom: '0.5rem',
                     color: 'var(--text-dark)',
-                    fontWeight: '500'
+                    fontWeight: '500',
                   }}
                 >
                   Nome Completo *
@@ -156,11 +163,22 @@ function Cadastro() {
                     borderRadius: '6px',
                     fontSize: '1rem',
                     background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)'
+                    color: 'var(--text-primary)',
                   }}
                   placeholder="Seu nome completo"
                 />
-                {errors.nome && <span style={{ color: '#f44336', fontSize: '0.8rem', marginTop: '0.25rem', display: 'block' }}>{errors.nome}</span>}
+                {errors.nome && (
+                  <span
+                    style={{
+                      color: '#f44336',
+                      fontSize: '0.8rem',
+                      marginTop: '0.25rem',
+                      display: 'block',
+                    }}
+                  >
+                    {errors.nome}
+                  </span>
+                )}
               </div>
 
               <div>
@@ -170,7 +188,7 @@ function Cadastro() {
                     display: 'block',
                     marginBottom: '0.5rem',
                     color: 'var(--text-dark)',
-                    fontWeight: '500'
+                    fontWeight: '500',
                   }}
                 >
                   Telefone *
@@ -189,11 +207,22 @@ function Cadastro() {
                     borderRadius: '6px',
                     fontSize: '1rem',
                     background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)'
+                    color: 'var(--text-primary)',
                   }}
                   placeholder="(11) 99999-9999"
                 />
-                {errors.telefone && <span style={{ color: '#f44336', fontSize: '0.8rem', marginTop: '0.25rem', display: 'block' }}>{errors.telefone}</span>}
+                {errors.telefone && (
+                  <span
+                    style={{
+                      color: '#f44336',
+                      fontSize: '0.8rem',
+                      marginTop: '0.25rem',
+                      display: 'block',
+                    }}
+                  >
+                    {errors.telefone}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -204,7 +233,7 @@ function Cadastro() {
                   display: 'block',
                   marginBottom: '0.5rem',
                   color: 'var(--text-dark)',
-                  fontWeight: '500'
+                  fontWeight: '500',
                 }}
               >
                 Email *
@@ -223,11 +252,22 @@ function Cadastro() {
                   borderRadius: '6px',
                   fontSize: '1rem',
                   background: 'var(--bg-primary)',
-                  color: 'var(--text-primary)'
+                  color: 'var(--text-primary)',
                 }}
                 placeholder="seu@email.com"
               />
-              {errors.email && <span style={{ color: '#f44336', fontSize: '0.8rem', marginTop: '0.25rem', display: 'block' }}>{errors.email}</span>}
+              {errors.email && (
+                <span
+                  style={{
+                    color: '#f44336',
+                    fontSize: '0.8rem',
+                    marginTop: '0.25rem',
+                    display: 'block',
+                  }}
+                >
+                  {errors.email}
+                </span>
+              )}
             </div>
 
             <div>
@@ -237,7 +277,7 @@ function Cadastro() {
                   display: 'block',
                   marginBottom: '0.5rem',
                   color: 'var(--text-dark)',
-                  fontWeight: '500'
+                  fontWeight: '500',
                 }}
               >
                 Tipo de Usuário
@@ -254,7 +294,7 @@ function Cadastro() {
                   borderRadius: '6px',
                   fontSize: '1rem',
                   background: 'var(--bg-primary)',
-                  color: 'var(--text-primary)'
+                  color: 'var(--text-primary)',
                 }}
               >
                 <option value="produtor">Produtor Rural</option>
@@ -272,7 +312,7 @@ function Cadastro() {
                     display: 'block',
                     marginBottom: '0.5rem',
                     color: 'var(--text-dark)',
-                    fontWeight: '500'
+                    fontWeight: '500',
                   }}
                 >
                   Senha *
@@ -291,11 +331,22 @@ function Cadastro() {
                     borderRadius: '6px',
                     fontSize: '1rem',
                     background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)'
+                    color: 'var(--text-primary)',
                   }}
                   placeholder="Mínimo 6 caracteres"
                 />
-                {errors.senha && <span style={{ color: '#f44336', fontSize: '0.8rem', marginTop: '0.25rem', display: 'block' }}>{errors.senha}</span>}
+                {errors.senha && (
+                  <span
+                    style={{
+                      color: '#f44336',
+                      fontSize: '0.8rem',
+                      marginTop: '0.25rem',
+                      display: 'block',
+                    }}
+                  >
+                    {errors.senha}
+                  </span>
+                )}
               </div>
 
               <div>
@@ -305,7 +356,7 @@ function Cadastro() {
                     display: 'block',
                     marginBottom: '0.5rem',
                     color: 'var(--text-dark)',
-                    fontWeight: '500'
+                    fontWeight: '500',
                   }}
                 >
                   Confirmar Senha *
@@ -324,16 +375,35 @@ function Cadastro() {
                     borderRadius: '6px',
                     fontSize: '1rem',
                     background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)'
+                    color: 'var(--text-primary)',
                   }}
                   placeholder="Repita a senha"
                 />
-                {errors.confirmarSenha && <span style={{ color: '#f44336', fontSize: '0.8rem', marginTop: '0.25rem', display: 'block' }}>{errors.confirmarSenha}</span>}
+                {errors.confirmarSenha && (
+                  <span
+                    style={{
+                      color: '#f44336',
+                      fontSize: '0.8rem',
+                      marginTop: '0.25rem',
+                      display: 'block',
+                    }}
+                  >
+                    {errors.confirmarSenha}
+                  </span>
+                )}
               </div>
             </div>
 
             <div style={{ marginTop: '1rem' }}>
-              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.9rem', cursor: 'pointer' }}>
+              <label
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '0.5rem',
+                  fontSize: '0.9rem',
+                  cursor: 'pointer',
+                }}
+              >
                 <input
                   type="checkbox"
                   name="termos"
@@ -342,11 +412,38 @@ function Cadastro() {
                   style={{ margin: '0.25rem 0 0 0', flexShrink: 0 }}
                 />
                 <span>
-                  Aceito os <Link to="/termos" style={{ color: 'var(--primary-color)', textDecoration: 'none' }}>Termos de Uso</Link> e
-                  <Link to="/privacidade" style={{ color: 'var(--primary-color)', textDecoration: 'none', marginLeft: '0.25rem' }}>Política de Privacidade</Link>
+                  Aceito os{' '}
+                  <Link
+                    to="/termos"
+                    style={{ color: 'var(--primary-color)', textDecoration: 'none' }}
+                  >
+                    Termos de Uso
+                  </Link>{' '}
+                  e
+                  <Link
+                    to="/privacidade"
+                    style={{
+                      color: 'var(--primary-color)',
+                      textDecoration: 'none',
+                      marginLeft: '0.25rem',
+                    }}
+                  >
+                    Política de Privacidade
+                  </Link>
                 </span>
               </label>
-              {errors.termos && <span style={{ color: '#f44336', fontSize: '0.8rem', marginTop: '0.25rem', display: 'block' }}>{errors.termos}</span>}
+              {errors.termos && (
+                <span
+                  style={{
+                    color: '#f44336',
+                    fontSize: '0.8rem',
+                    marginTop: '0.25rem',
+                    display: 'block',
+                  }}
+                >
+                  {errors.termos}
+                </span>
+              )}
             </div>
 
             <button
@@ -363,7 +460,7 @@ function Cadastro() {
                 fontWeight: '600',
                 cursor: loading ? 'not-allowed' : 'pointer',
                 transition: 'background 0.3s ease',
-                marginTop: '1rem'
+                marginTop: '1rem',
               }}
               onMouseOver={(e) => !loading && (e.target.style.background = 'var(--primary-dark)')}
               onMouseOut={(e) => !loading && (e.target.style.background = 'var(--primary-color)')}
@@ -372,22 +469,29 @@ function Cadastro() {
             </button>
 
             {errors.submit && (
-              <div style={{ 
-                padding: '0.75rem', 
-                background: '#ffebee', 
-                color: '#c62828', 
-                borderRadius: '6px',
-                fontSize: '0.9rem'
-              }}>
+              <div
+                style={{
+                  padding: '0.75rem',
+                  background: '#ffebee',
+                  color: '#c62828',
+                  borderRadius: '6px',
+                  fontSize: '0.9rem',
+                }}
+              >
                 {errors.submit}
               </div>
             )}
           </form>
 
-          <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
-            <p style={{ color: 'var(--text-light)', margin: '0 0 1rem 0' }}>
-              Já tem uma conta?
-            </p>
+          <div
+            style={{
+              textAlign: 'center',
+              marginTop: '1.5rem',
+              paddingTop: '1.5rem',
+              borderTop: '1px solid var(--border-color)',
+            }}
+          >
+            <p style={{ color: 'var(--text-light)', margin: '0 0 1rem 0' }}>Já tem uma conta?</p>
             <Link
               to="/login"
               style={{
@@ -399,7 +503,7 @@ function Cadastro() {
                 borderRadius: '6px',
                 textDecoration: 'none',
                 fontWeight: '600',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
               }}
               onMouseOver={(e) => {
                 e.target.style.background = 'var(--primary-color)';

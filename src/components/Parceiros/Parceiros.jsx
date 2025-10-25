@@ -7,44 +7,44 @@ const Parceiros = () => {
       nome: 'Sicredi',
       tipo: 'Cooperativa Financeira',
       logo: '🏦', // Placeholder - será substituído por logo real
-      descricao: 'Parceria para soluções financeiras agrícolas'
+      descricao: 'Parceria para soluções financeiras agrícolas',
     },
     {
       nome: 'Bayer',
       tipo: 'Agronegócio',
       logo: '🌱', // Placeholder - será substituído por logo real
-      descricao: 'Inovação em sementes e proteção de cultivos'
+      descricao: 'Inovação em sementes e proteção de cultivos',
     },
     {
       nome: 'Banco do Brasil',
       tipo: 'Instituição Financeira',
       logo: '🏛️', // Placeholder - será substituído por logo real
-      descricao: 'Crédito rural e apoio ao agronegócio'
+      descricao: 'Crédito rural e apoio ao agronegócio',
     },
     {
       nome: 'B3',
       tipo: 'Bolsa de Valores',
       logo: '📈', // Placeholder - será substituído por logo real
-      descricao: 'Negociação de contratos agrícolas futuros'
+      descricao: 'Negociação de contratos agrícolas futuros',
     },
     {
       nome: 'Embrapa',
       tipo: 'Pesquisa Agropecuária',
       logo: '🔬', // Placeholder - será substituído por logo real
-      descricao: 'Centro de pesquisa e inovação agrícola'
+      descricao: 'Centro de pesquisa e inovação agrícola',
     },
     {
       nome: 'UFPR',
       tipo: 'Universidade',
       logo: '🎓', // Placeholder - será substituído por logo real
-      descricao: 'Pesquisa e formação em agronomia'
+      descricao: 'Pesquisa e formação em agronomia',
     },
     {
       nome: 'UTFPR',
       tipo: 'Universidade',
       logo: '📚', // Placeholder - será substituído por logo real
-      descricao: 'Tecnologia e inovação para o agronegócio'
-    }
+      descricao: 'Tecnologia e inovação para o agronegócio',
+    },
   ];
 
   return (

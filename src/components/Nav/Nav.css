@@ -5,6 +5,13 @@
   margin: 0;
 }
 
+/* Reduzir gap em tablets */
+@media (max-width: 1024px) {
+  .nav-menu {
+    gap: 1rem;
+  }
+}
+
 .nav-menu li {
   list-style: none;
 }
@@ -15,6 +22,9 @@
   font-weight: 600;
   cursor: pointer;
   position: relative;
+  /* Melhor área de toque */
+  padding: 0.5rem;
+  display: inline-block;
 }
 .nav-link::after {
   content: '';
@@ -42,6 +52,12 @@
   cursor: pointer;
   border: none;
   background: transparent;
+  /* Melhor área de toque */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  align-items: center;
 }
 .nav-toggle span {
   width: 25px;
@@ -53,20 +69,24 @@
 .nav-toggle:focus {
   outline: 3px solid rgba(0, 0, 0, 0.08);
   outline-offset: 4px;
+  border-radius: 4px;
 }
 
 @media (max-width: 900px) {
   .nav-menu {
     position: absolute;
-    right: 20px;
-    top: 70px;
+    right: 16px;
+    top: 65px;
     background: var(--bg-white, #fff);
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     flex-direction: column;
     gap: 0.5rem;
     display: none;
+    min-width: 200px;
+    /* Melhor animação */
+    animation: slideDown 0.3s ease;
   }
 
   .nav-menu.active {
@@ -75,6 +95,40 @@
 
   .nav-toggle {
     display: flex;
+  }
+
+  /* Melhor espaçamento dos links no menu mobile */
+  .nav-link {
+    padding: 0.75rem 1rem;
+    width: 100%;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .nav-link:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-menu {
+    right: 12px;
+    top: 60px;
+    padding: 1rem;
+    min-width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+  }
+}
+
+/* Animação de slide down para o menu */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

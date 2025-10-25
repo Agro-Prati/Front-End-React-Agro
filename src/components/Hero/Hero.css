@@ -7,6 +7,20 @@
   align-items: center;
 }
 
+/* Melhor padding em mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0 60px;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 0 40px;
+  }
+}
+
 .hero-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,6 +29,19 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+}
+
+/* Responsividade do container */
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 0 12px;
+  }
 }
 
 .hero-content {
@@ -27,6 +54,26 @@
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: var(--text-dark);
+}
+
+/* Tipografia fluida para o título */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .highlight {
@@ -52,6 +99,21 @@
   line-height: 1.7;
 }
 
+/* Ajustar descrição em mobile */
+@media (max-width: 768px) {
+  .hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
 .hero-stats {
   display: flex;
   gap: 2rem;
@@ -62,8 +124,26 @@
   box-shadow: var(--shadow);
 }
 
+/* Stats responsivos */
+@media (max-width: 768px) {
+  .hero-stats {
+    gap: 1.5rem;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats {
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+}
+
 .stat {
   text-align: center;
+  flex: 1;
 }
 
 .stat-number {
@@ -74,16 +154,52 @@
   margin-bottom: 0.5rem;
 }
 
+/* Ajustar números em mobile */
+@media (max-width: 768px) {
+  .stat-number {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-number {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
 .stat-label {
   font-size: 0.9rem;
   color: var(--text-light);
   font-weight: 500;
 }
 
+@media (max-width: 480px) {
+  .stat-label {
+    font-size: 0.8rem;
+  }
+}
+
 .hero-buttons {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
+}
+
+/* Melhor layout de botões em mobile */
+@media (max-width: 768px) {
+  .hero-buttons {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
 }
 
 .hero-image {
@@ -98,10 +214,24 @@
   box-shadow: var(--shadow-hover);
 }
 
+/* Ajustar imagem em mobile */
+@media (max-width: 768px) {
+  .hero-image img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image img {
+    height: 250px;
+  }
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
   border: none;
@@ -112,6 +242,25 @@
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
+  /* Melhor área de toque */
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+/* Ajustar botões em mobile */
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
 }
 
 .btn-primary {
@@ -125,6 +274,13 @@
   box-shadow: var(--shadow-hover);
 }
 
+/* Desabilitar hover transform em touch devices */
+@media (hover: none) {
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
 .btn-secondary {
   background: transparent;
   color: var(--primary-color);
@@ -135,6 +291,45 @@
   background: var(--primary-color);
   color: var(--text-white);
   transform: translateY(-2px);
+}
+
+@media (hover: none) {
+  .btn-secondary:hover {
+    transform: none;
+  }
+}
+
+/* Animação do ícone do robô */
+.btn-primary i.fa-robot {
+  display: inline-block;
+  animation: robotPulse 2s ease-in-out infinite;
+}
+
+@keyframes robotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.btn-primary:hover i.fa-robot {
+  animation: robotShake 0.5s ease-in-out;
+}
+
+@keyframes robotShake {
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+  }
+  25% {
+    transform: translateX(-3px) scale(1.1);
+  }
+  75% {
+    transform: translateX(3px) scale(1.1);
+  }
 }
 
 /* Responsive */

@@ -4,12 +4,40 @@
   background: var(--bg-white);
 }
 
+@media (max-width: 768px) {
+  .parceiros {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .parceiros {
+    padding: 40px 0;
+  }
+}
+
 .parceiros-logos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin: 3rem 0;
   justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .parceiros-logos {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .parceiros-logos {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
 }
 
 .parceiro-logo-item {
@@ -20,14 +48,36 @@
   padding: 1.5rem;
   background: var(--bg-light);
   border-radius: var(--border-radius);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   width: 100%;
   max-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .parceiro-logo-item {
+    max-width: 150px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .parceiro-logo-item {
+    max-width: 140px;
+    padding: 1rem;
+  }
 }
 
 .parceiro-logo-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media (hover: none) {
+  .parceiro-logo-item:hover {
+    transform: none;
+  }
 }
 
 .parceiro-logo {
@@ -42,9 +92,36 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768px) {
+  .parceiro-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .parceiro-logo {
+    width: 55px;
+    height: 55px;
+  }
+}
+
 .logo-icon {
   font-size: 2rem;
   color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-icon {
+    font-size: 1.4rem;
+  }
 }
 
 .logo-image {
@@ -61,11 +138,23 @@
   font-weight: 600;
 }
 
+@media (max-width: 480px) {
+  .parceiro-info h4 {
+    font-size: 1rem;
+  }
+}
+
 .parceiro-info p {
   font-size: 0.9rem;
   color: var(--text-light);
   margin: 0;
   font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .parceiro-info p {
+    font-size: 0.85rem;
+  }
 }
 
 .parceiros-stats {

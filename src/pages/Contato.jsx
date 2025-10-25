@@ -10,8 +10,15 @@ function ContatoPage() {
         <h1>Entre em Contato</h1>
         <p>Estamos aqui para ajudar. Fale conosco!</p>
 
-        <div style={{ maxWidth: '800px', margin: '2rem auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-
+        <div
+          style={{
+            maxWidth: '800px',
+            margin: '2rem auto',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '2rem',
+          }}
+        >
           <div style={{ textAlign: 'left' }}>
             <h3>Informações de Contato</h3>
 
@@ -27,12 +34,22 @@ function ContatoPage() {
 
             <div style={{ marginBottom: '1rem' }}>
               <h4>🏢 Endereço</h4>
-              <p>Rua das Plantas, 123<br />São Paulo - SP<br />CEP: 01234-567</p>
+              <p>
+                Rua das Plantas, 123
+                <br />
+                São Paulo - SP
+                <br />
+                CEP: 01234-567
+              </p>
             </div>
 
             <div style={{ marginBottom: '1rem' }}>
               <h4>🕒 Horário de Atendimento</h4>
-              <p>Segunda a Sexta: 8h às 18h<br />Sábado: 8h às 12h</p>
+              <p>
+                Segunda a Sexta: 8h às 18h
+                <br />
+                Sábado: 8h às 12h
+              </p>
             </div>
           </div>
 
@@ -40,7 +57,9 @@ function ContatoPage() {
             <h3>Envie sua Mensagem</h3>
             <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label htmlFor="nome" style={{ display: 'block', marginBottom: '0.5rem' }}>Nome:</label>
+                <label htmlFor="nome" style={{ display: 'block', marginBottom: '0.5rem' }}>
+                  Nome:
+                </label>
                 <input
                   type="text"
                   id="nome"
@@ -50,14 +69,16 @@ function ContatoPage() {
                     padding: '0.75rem',
                     border: '1px solid #e0e0e0',
                     borderRadius: '4px',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
                   }}
                   placeholder="Seu nome completo"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>Email:</label>
+                <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>
+                  Email:
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -67,14 +88,16 @@ function ContatoPage() {
                     padding: '0.75rem',
                     border: '1px solid #e0e0e0',
                     borderRadius: '4px',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
                   }}
                   placeholder="seu@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="mensagem" style={{ display: 'block', marginBottom: '0.5rem' }}>Mensagem:</label>
+                <label htmlFor="mensagem" style={{ display: 'block', marginBottom: '0.5rem' }}>
+                  Mensagem:
+                </label>
                 <textarea
                   id="mensagem"
                   name="mensagem"
@@ -85,7 +108,7 @@ function ContatoPage() {
                     border: '1px solid #e0e0e0',
                     borderRadius: '4px',
                     fontSize: '1rem',
-                    resize: 'vertical'
+                    resize: 'vertical',
                   }}
                   placeholder="Digite sua mensagem aqui..."
                 ></textarea>
@@ -101,7 +124,7 @@ function ContatoPage() {
                   borderRadius: '4px',
                   fontSize: '1rem',
                   fontWeight: 'bold',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
               >
                 Enviar Mensagem

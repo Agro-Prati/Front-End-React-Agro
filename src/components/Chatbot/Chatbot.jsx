@@ -1,47 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { sendChatMessage, getChatbotInfo } from '../../services/chatbotService';
+import ReactMarkdown from 'react-markdown';
 import './Chatbot.css';
 
 const Chatbot = ({ initialOpen = false, onToggle }) => {
   const [isOpen, setIsOpen] = useState(initialOpen);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const messagesContainerRef = useRef(null);
   const inputRef = useRef(null);
-
-  // Mensagens predefinidas baseadas no protótipo
-  const predefinedMessages = {
-    saudacao: [
-      'Olá! Sou o assistente virtual da AgroPrati. Como posso ajudá-lo hoje?',
-      'Oi! Bem-vindo à AgroPrati! Em que posso auxiliá-lo?',
-      'Olá, agricultor! Estou aqui para ajudar com suas dúvidas sobre plantio e manejo.',
-    ],
-    plantio: [
-      'Para plantio de milho, recomendo solo bem drenado e pH entre 5,5 e 6,8. Posso conectá-lo com especialistas em sua região.',
-      'O melhor período para plantio de soja é entre setembro e dezembro. Quer dicas específicas para sua região?',
-      'Para plantio de feijão, considere a época das águas (outubro-janeiro) ou da seca (março-junho).',
-    ],
-    pragas: [
-      'Para controle de pragas, primeiro preciso identificar qual está afetando sua cultura. Pode descrever os sintomas?',
-      'Lagarta-do-cartucho no milho? Recomendo monitoramento e controle integrado. Posso conectá-lo com especialistas.',
-      'Problemas com pulgões? Existem soluções biológicas e químicas. Precisa de indicação de fornecedores?',
-    ],
-    fertilizacao: [
-      'A fertilização ideal depende da análise do solo. Temos parceiros que fazem análise na sua região.',
-      'Para NPK, recomendo análise de solo primeiro. Posso conectá-lo com laboratórios credenciados.',
-      'Adubação orgânica é excelente! Quer dicas sobre compostagem ou fornecedores de adubo orgânico?',
-    ],
-    irrigacao: [
-      'Sistema de irrigação por gotejamento é ideal para economizar água. Temos parceiros especializados.',
-      'Para irrigação eficiente, considere horários adequados e monitoramento da umidade do solo.',
-      'Problemas com irrigação? Posso conectá-lo com técnicos especializados em sua região.',
-    ],
-    default: [
-      'Interessante! Para essa questão específica, recomendo conversar com um especialista. Posso conectá-lo com profissionais qualificados.',
-      'Essa é uma ótima pergunta! Temos especialistas que podem ajudar melhor. Quer que eu encontre um em sua região?',
-      'Para orientações mais detalhadas, sugiro consultar nossos parceiros especialistas. Posso fazer essa conexão para você.',
-    ],
-  };
 
   // Scroll automático para mensagens novas
   const scrollToBottom = () => {
@@ -54,47 +23,21 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Mensagem inicial de boas-vindas
+  // Mensagem inicial de boas-vindas e verificar modo do chatbot
   useEffect(() => {
+    const chatbotInfo = getChatbotInfo();
+
+    const modeIndicator =
+      chatbotInfo.mode === 'real' ? '🤖 (IA Real - Google Gemini)' : '💬 (Modo Demo)';
+
     const welcomeMessage = {
       id: Date.now(),
       type: 'bot',
-      text: 'Olá! Eu sou o AgroBot, seu assistente agrícola inteligente. Como posso ajudá-lo hoje? 🌱',
+      text: `Olá! Eu sou o AgroBot ${modeIndicator}, seu assistente agrícola inteligente. Como posso ajudá-lo hoje? 🌱`,
       timestamp: new Date(),
     };
     setMessages([welcomeMessage]);
   }, []);
-
-  // Gerar resposta baseada na mensagem do usuário
-  const generateResponse = (userMessage) => {
-    const msg = userMessage.toLowerCase();
-
-    if (msg.includes('plantio') || msg.includes('plantar') || msg.includes('semear')) {
-      return getRandomMessage(predefinedMessages.plantio);
-    } else if (
-      msg.includes('praga') ||
-      msg.includes('inseto') ||
-      msg.includes('lagarta') ||
-      msg.includes('pulgão')
-    ) {
-      return getRandomMessage(predefinedMessages.pragas);
-    } else if (
-      msg.includes('adubo') ||
-      msg.includes('fertilizante') ||
-      msg.includes('npk') ||
-      msg.includes('nutrição')
-    ) {
-      return getRandomMessage(predefinedMessages.fertilizacao);
-    } else if (msg.includes('irrigação') || msg.includes('água') || msg.includes('irrigar')) {
-      return getRandomMessage(predefinedMessages.irrigacao);
-    } else {
-      return getRandomMessage(predefinedMessages.default);
-    }
-  };
-
-  const getRandomMessage = (messagesArray) => {
-    return messagesArray[Math.floor(Math.random() * messagesArray.length)];
-  };
 
   // Adicionar mensagem do usuário
   const addUserMessage = (text) => {
@@ -119,7 +62,7 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
   };
 
   // Enviar mensagem
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     const message = inputValue.trim();
     if (!message) return;
 
@@ -127,18 +70,34 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simular delay de resposta
-    setTimeout(() => {
+    try {
+      // Chamar o serviço do chatbot (API real ou hardcoded)
+      const response = await sendChatMessage(message);
       setIsTyping(false);
-      const response = generateResponse(message);
       addBotMessage(response);
-    }, 1500);
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      setIsTyping(false);
+      addBotMessage('Desculpe, ocorreu um erro. Por favor, tente novamente.');
+    }
   };
 
   // Enviar sugestão
-  const handleSendSuggestion = (suggestion) => {
-    setInputValue(suggestion);
-    handleSendMessage();
+  const handleSendSuggestion = async (suggestion) => {
+    if (!suggestion.trim()) return;
+
+    addUserMessage(suggestion);
+    setIsTyping(true);
+
+    try {
+      const response = await sendChatMessage(suggestion);
+      setIsTyping(false);
+      addBotMessage(response);
+    } catch (error) {
+      console.error('Erro ao enviar sugestão:', error);
+      setIsTyping(false);
+      addBotMessage('Desculpe, ocorreu um erro. Por favor, tente novamente.');
+    }
   };
 
   // Toggle chat
@@ -153,6 +112,11 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
     }
   };
 
+  // Toggle expand
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   // Handle key press
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -164,15 +128,25 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
   return (
     <>
       {/* Chatbot Widget */}
-      <div className={`chatbot-widget ${isOpen ? 'open' : ''}`}>
+      <div className={`chatbot-widget ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''}`}>
         <div className="chatbot-header">
           <div className="chatbot-title">
             <i className="fas fa-robot"></i>
             <span>AgroBot</span>
           </div>
-          <button className="chatbot-close" onClick={toggleChat} aria-label="Fechar chat">
-            <i className="fas fa-times"></i>
-          </button>
+          <div className="chatbot-actions">
+            <button
+              className="chatbot-expand"
+              onClick={toggleExpand}
+              aria-label={isExpanded ? 'Minimizar chat' : 'Expandir chat'}
+              title={isExpanded ? 'Minimizar' : 'Expandir'}
+            >
+              <i className={isExpanded ? 'fas fa-compress' : 'fas fa-expand'}></i>
+            </button>
+            <button className="chatbot-close" onClick={toggleChat} aria-label="Fechar chat">
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
         </div>
 
         <div className="chatbot-messages" ref={messagesContainerRef} role="log" aria-live="polite">
@@ -181,7 +155,15 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
               <div className="message-avatar">
                 <i className={message.type === 'bot' ? 'fas fa-robot' : 'fas fa-user'}></i>
               </div>
-              <div className="message-content">{message.text}</div>
+              <div className="message-content">
+                {message.type === 'bot' ? (
+                  <div className="markdown-response">
+                    <ReactMarkdown>{message.text}</ReactMarkdown>
+                  </div>
+                ) : (
+                  <span>{message.text}</span>
+                )}
+              </div>
             </div>
           ))}
 

@@ -7,7 +7,6 @@ import Chatbot from '../components/Chatbot/Chatbot';
 import { useAuth } from '../contexts/useAuth';
 import authService from '../services/authService';
 
-
 function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -16,14 +15,14 @@ function Login() {
   const [formData, setFormData] = useState({
     email: '',
     senha: '',
-    lembrar: false
+    lembrar: false,
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
     // Limpa erro quando usuário começa a digitar
     if (error) setError('');
@@ -64,7 +63,7 @@ function Login() {
       if (token && user) {
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
-        
+
         alert('Login com Google realizado com sucesso!');
         window.location.href = '/';
       } else {
@@ -85,22 +84,26 @@ function Login() {
   return (
     <>
       <Header />
-      <main style={{
-        minHeight: '70vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem',
-        background: 'var(--bg-light)'
-      }}>
-        <div style={{
-          background: 'var(--bg-white)',
+      <main
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: '2rem',
-          borderRadius: '12px',
-          boxShadow: 'var(--shadow)',
-          width: '100%',
-          maxWidth: '400px'
-        }}>
+          background: 'var(--bg-light)',
+        }}
+      >
+        <div
+          style={{
+            background: 'var(--bg-white)',
+            padding: '2rem',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow)',
+            width: '100%',
+            maxWidth: '400px',
+          }}
+        >
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <img
               src="/src/assets/folha.png"
@@ -113,7 +116,10 @@ function Login() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -121,7 +127,7 @@ function Login() {
                   display: 'block',
                   marginBottom: '0.5rem',
                   color: 'var(--text-dark)',
-                  fontWeight: '500'
+                  fontWeight: '500',
                 }}
               >
                 Email
@@ -140,7 +146,7 @@ function Login() {
                   borderRadius: '6px',
                   fontSize: '1rem',
                   background: 'var(--bg-primary)',
-                  color: 'var(--text-primary)'
+                  color: 'var(--text-primary)',
                 }}
                 placeholder="seu@email.com"
               />
@@ -153,7 +159,7 @@ function Login() {
                   display: 'block',
                   marginBottom: '0.5rem',
                   color: 'var(--text-dark)',
-                  fontWeight: '500'
+                  fontWeight: '500',
                 }}
               >
                 Senha
@@ -172,14 +178,16 @@ function Login() {
                   borderRadius: '6px',
                   fontSize: '1rem',
                   background: 'var(--bg-primary)',
-                  color: 'var(--text-primary)'
+                  color: 'var(--text-primary)',
                 }}
                 placeholder="Sua senha"
               />
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+              <label
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}
+              >
                 <input
                   type="checkbox"
                   name="lembrar"
@@ -194,7 +202,7 @@ function Login() {
                 style={{
                   color: 'var(--primary-color)',
                   textDecoration: 'none',
-                  fontSize: '0.9rem'
+                  fontSize: '0.9rem',
                 }}
               >
                 Esqueceu a senha?
@@ -214,7 +222,7 @@ function Login() {
                 fontSize: '1rem',
                 fontWeight: '600',
                 cursor: loading ? 'not-allowed' : 'pointer',
-                transition: 'background 0.3s ease'
+                transition: 'background 0.3s ease',
               }}
               onMouseOver={(e) => !loading && (e.target.style.background = 'var(--primary-dark)')}
               onMouseOut={(e) => !loading && (e.target.style.background = 'var(--primary-color)')}
@@ -223,32 +231,51 @@ function Login() {
             </button>
 
             {error && (
-              <div style={{ 
-                padding: '0.75rem', 
-                background: '#ffebee', 
-                color: '#c62828', 
-                borderRadius: '6px',
-                fontSize: '0.9rem',
-                marginTop: '0.5rem'
-              }}>
+              <div
+                style={{
+                  padding: '0.75rem',
+                  background: '#ffebee',
+                  color: '#c62828',
+                  borderRadius: '6px',
+                  fontSize: '0.9rem',
+                  marginTop: '0.5rem',
+                }}
+              >
                 {error}
               </div>
             )}
           </form>
 
           <div style={{ textAlign: 'center', margin: '1.5rem 0', color: 'var(--text-light)' }}>
-            <span style={{ background: 'var(--bg-white)', padding: '0 1rem', position: 'relative', zIndex: 1 }}>
+            <span
+              style={{
+                background: 'var(--bg-white)',
+                padding: '0 1rem',
+                position: 'relative',
+                zIndex: 1,
+              }}
+            >
               ou
             </span>
-            <div style={{ height: '1px', background: 'var(--border-color)', marginTop: '-0.7rem', position: 'relative', zIndex: 0 }}></div>
+            <div
+              style={{
+                height: '1px',
+                background: 'var(--border-color)',
+                marginTop: '-0.7rem',
+                position: 'relative',
+                zIndex: 0,
+              }}
+            ></div>
           </div>
 
-          <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center',
-            padding: '0.5rem'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '0.5rem',
+            }}
+          >
             <GoogleLogin
               onSuccess={handleGoogleLoginSuccess}
               onError={handleGoogleLoginError}
@@ -260,10 +287,15 @@ function Login() {
             />
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
-            <p style={{ color: 'var(--text-light)', margin: '0 0 1rem 0' }}>
-              Não tem uma conta?
-            </p>
+          <div
+            style={{
+              textAlign: 'center',
+              marginTop: '1.5rem',
+              paddingTop: '1.5rem',
+              borderTop: '1px solid var(--border-color)',
+            }}
+          >
+            <p style={{ color: 'var(--text-light)', margin: '0 0 1rem 0' }}>Não tem uma conta?</p>
             <Link
               to="/cadastro"
               style={{
@@ -275,7 +307,7 @@ function Login() {
                 borderRadius: '6px',
                 textDecoration: 'none',
                 fontWeight: '600',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
               }}
               onMouseOver={(e) => {
                 e.target.style.background = 'var(--primary-color)';

@@ -16,6 +16,8 @@ import Contato from './pages/Contato';
 import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
 import Profile from './pages/Profile';
+import PlanoSafra from './pages/PlanoSafra';
+import Aposentadoria from './pages/Aposentadoria';
 
 function App() {
   return (
@@ -27,17 +29,19 @@ function App() {
           <Route path="/solucoes" element={<Solucoes />} />
           <Route path="/parceiros" element={<Parceiros />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/plano-safra" element={<PlanoSafra />} />
+          <Route path="/aposentadoria" element={<Aposentadoria />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          
+
           {/* Rotas protegidas - requerem autenticação */}
-          <Route 
-            path="/profile" 
+          <Route
+            path="/profile"
             element={
               <ProtectedRoute>
                 <Profile />
               </ProtectedRoute>
-            } 
+            }
           />
         </Routes>
       </AuthProvider>

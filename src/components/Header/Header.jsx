@@ -8,10 +8,10 @@ import Nav from '../Nav/Nav';
 
 const defaultMenu = [
   { label: 'Início', href: '/' },
-  { label: 'Sobre', href: '/sobre' },
   { label: 'Soluções', href: '/solucoes' },
+  { label: 'Plano de Safra', href: '/plano-safra' },
+  { label: 'Aposentadoria', href: '/aposentadoria' },
   { label: 'Parceiros', href: '/parceiros' },
-  { label: 'Contato', href: '/contato' },
 ];
 
 export default function Header({ menuItems = defaultMenu }) {
@@ -56,12 +56,12 @@ export default function Header({ menuItems = defaultMenu }) {
                 alt="Agro+Prati Logo"
                 style={{ height: '32px', width: '32px' }}
               />
-              <span>Agro+Prati</span>
+              <span className="nav-logo-text">Agro+Prati</span>
             </div>
           </Link>
 
           <Nav menuItems={menuItems} onNavigate={(href) => handleNavClick(href)} />
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div className="header-actions">
             <ThemeToggle />
             <ProfileButton />
             <LoginButton />
