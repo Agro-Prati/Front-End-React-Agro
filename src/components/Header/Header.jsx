@@ -56,12 +56,12 @@ export default function Header({ menuItems = defaultMenu }) {
                 alt="Agro+Prati Logo"
                 style={{ height: '32px', width: '32px' }}
               />
-              <span>Agro+Prati</span>
+              <span className="nav-logo-text">Agro+Prati</span>
             </div>
           </Link>
 
           <Nav menuItems={menuItems} onNavigate={(href) => handleNavClick(href)} />
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div className="header-actions">
             <ThemeToggle />
             <ProfileButton />
             <LoginButton />

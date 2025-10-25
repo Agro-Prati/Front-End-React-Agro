@@ -19,6 +19,13 @@
   padding: 1.5rem 0;
 }
 
+/* Reduzir padding em mobile */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 0;
+  }
+}
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -26,6 +33,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Melhor espaçamento em mobile */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 12px;
+  }
 }
 
 .nav-logo {
@@ -36,6 +56,28 @@
   font-weight: 700;
   color: var(--primary-color);
   cursor: pointer;
+}
+
+.nav-logo-text {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+/* Reduzir logo em telas pequenas */
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 1.1rem;
+    gap: 8px;
+  }
+  
+  /* Ocultar texto "Agro+Prati" no mobile */
+  .nav-logo-text {
+    display: none;
+  }
+  
+  .nav-logo i {
+    font-size: 1.3rem !important;
+  }
 }
 
 .nav-logo-link {
@@ -50,4 +92,24 @@
 
 .nav-logo i {
   font-size: 1.5rem;
+}
+
+/* Action buttons container */
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Reduzir gap entre botões no mobile */
+@media (max-width: 768px) {
+  .header-actions {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    gap: 4px;
+  }
 }

@@ -10,8 +10,18 @@ import Chatbot from '../components/Chatbot/Chatbot';
 
 function Home() {
   const handleOpenChat = () => {
-    // Placeholder: abrir chat (futuro componente Chatbot)
-    alert('Chat IA Agrícola será aberto em breve!');
+    // Abre o chatbot clicando no botão toggle
+    const toggleButton = document.querySelector('.chatbot-toggle');
+    if (toggleButton) {
+      // Verifica se o chatbot já está aberto
+      const chatbotWidget = document.querySelector('.chatbot-widget');
+      const isAlreadyOpen = chatbotWidget?.classList.contains('open');
+      
+      // Só clica se não estiver aberto
+      if (!isAlreadyOpen) {
+        toggleButton.click();
+      }
+    }
   };
 
   const handleScrollTo = (sectionId) => {
@@ -39,7 +49,7 @@ function Home() {
 
       <Footer />
 
-      <Chatbot initialOpen={true} />
+      <Chatbot initialOpen={false} />
     </>
   );
 }

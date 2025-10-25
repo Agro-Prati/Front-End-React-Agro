@@ -5,6 +5,7 @@ import './Chatbot.css';
 
 const Chatbot = ({ initialOpen = false, onToggle }) => {
   const [isOpen, setIsOpen] = useState(initialOpen);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -112,6 +113,11 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
     }
   };
 
+  // Toggle expand
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   // Handle key press
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -123,15 +129,25 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
   return (
     <>
       {/* Chatbot Widget */}
-      <div className={`chatbot-widget ${isOpen ? 'open' : ''}`}>
+      <div className={`chatbot-widget ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''}`}>
         <div className="chatbot-header">
           <div className="chatbot-title">
             <i className="fas fa-robot"></i>
             <span>AgroBot</span>
           </div>
-          <button className="chatbot-close" onClick={toggleChat} aria-label="Fechar chat">
-            <i className="fas fa-times"></i>
-          </button>
+          <div className="chatbot-actions">
+            <button 
+              className="chatbot-expand" 
+              onClick={toggleExpand} 
+              aria-label={isExpanded ? "Minimizar chat" : "Expandir chat"}
+              title={isExpanded ? "Minimizar" : "Expandir"}
+            >
+              <i className={isExpanded ? 'fas fa-compress' : 'fas fa-expand'}></i>
+            </button>
+            <button className="chatbot-close" onClick={toggleChat} aria-label="Fechar chat">
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
         </div>
 
         <div className="chatbot-messages" ref={messagesContainerRef} role="log" aria-live="polite">

@@ -10,7 +10,27 @@
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  white-space: nowrap;
 }
+
 .login-btn:hover {
   background: var(--primary-dark);
+}
+
+/* Responsividade mobile */
+@media (max-width: 768px) {
+  .login-btn {
+    padding: 0.55rem 0.875rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    min-height: 40px;
+  }
 }

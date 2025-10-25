@@ -1,8 +1,15 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0; /* Removido padding para melhor controle em mobile */
   text-align: center;
+}
+
+/* Responsividade para telas médias e pequenas */
+@media (max-width: 1280px) {
+  #root {
+    max-width: 100%;
+  }
 }
 
 .logo {
@@ -11,6 +18,15 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
+/* Reduzir logo em mobile */
+@media (max-width: 768px) {
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
@@ -37,6 +53,18 @@
   padding: 2em;
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1em;
+  }
+}
+
 .read-the-docs {
   color: #888;
 }
@@ -51,4 +79,21 @@
 .page-main-no-center {
   min-height: 70vh;
   padding: 6rem 2rem 2rem 2rem; /* Increased top padding to account for fixed header */
+}
+
+/* Responsividade para páginas */
+@media (max-width: 768px) {
+  .page-main,
+  .page-main-no-center {
+    padding: 5rem 1rem 2rem 1rem;
+    min-height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-main,
+  .page-main-no-center {
+    padding: 4.5rem 0.75rem 1.5rem 0.75rem;
+    min-height: 50vh;
+  }
 }

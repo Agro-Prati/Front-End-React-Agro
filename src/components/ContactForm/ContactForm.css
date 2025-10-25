@@ -4,11 +4,44 @@
   background: var(--bg-light);
 }
 
+/* Melhor padding em mobile */
+@media (max-width: 768px) {
+  .contato {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contato {
+    padding: 40px 0;
+  }
+}
+
 .contato-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: start;
+}
+
+/* Layout responsivo aprimorado */
+@media (max-width: 1024px) {
+  .contato-content {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contato-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contato-content {
+    gap: 2rem;
+  }
 }
 
 .contato-info h3 {
@@ -18,9 +51,29 @@
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .contato-info h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contato-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
 .info-item i {
   font-size: 1.5rem;
   color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+  .info-item i {
+    font-size: 1.3rem;
+  }
 }
 
 .info-item h4 {
@@ -28,8 +81,20 @@
   color: var(--text-dark);
 }
 
+@media (max-width: 480px) {
+  .info-item h4 {
+    font-size: 1rem;
+  }
+}
+
 .info-item p {
   color: var(--text-light);
+}
+
+@media (max-width: 480px) {
+  .info-item p {
+    font-size: 0.95rem;
+  }
 }
 
 .contato-form {
@@ -38,12 +103,36 @@
   gap: 1rem;
 }
 
+@media (max-width: 480px) {
+  .contato-form {
+    gap: 0.875rem;
+  }
+}
+
 .contato-form input,
 .contato-form textarea {
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 1rem;
+  /* Prevenir zoom no iOS */
+  font-size: 16px;
+  background: var(--bg-white);
+  color: var(--text-dark);
+  transition: border-color 0.3s ease;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+  .contato-form input,
+  .contato-form textarea {
+    padding: 0.875rem;
+  }
 }
 
 .contato-form textarea {
@@ -51,8 +140,15 @@
   min-height: 120px;
 }
 
+@media (max-width: 480px) {
+  .contato-form textarea {
+    min-height: 100px;
+  }
+}
+
 .contato-form button {
   align-self: flex-start;
+  min-height: 48px;
 }
 
 /* Responsive */
@@ -64,5 +160,6 @@
 
   .contato-form button {
     align-self: stretch;
+    width: 100%;
   }
 }
