@@ -8,10 +8,10 @@ import Nav from '../Nav/Nav';
 
 const defaultMenu = [
   { label: 'Início', href: '/' },
-  { label: 'Sobre', href: '/sobre' },
   { label: 'Soluções', href: '/solucoes' },
+  { label: 'Plano de Safra', href: '/plano-safra' },
+  { label: 'Aposentadoria', href: '/aposentadoria' },
   { label: 'Parceiros', href: '/parceiros' },
-  { label: 'Contato', href: '/contato' },
 ];
 
 export default function Header({ menuItems = defaultMenu }) {

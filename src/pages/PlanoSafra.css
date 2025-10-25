@@ -1,0 +1,664 @@
+/* Plano de Safra Page Styles */
+
+.plano-safra-page {
+  min-height: 100vh;
+}
+
+.plano-safra-hero {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+  color: white;
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+
+.plano-safra-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.plano-safra-hero .subtitle {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.mode-badge {
+  margin-top: 1rem;
+}
+
+.badge-real,
+.badge-demo {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.badge-real {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.badge-demo {
+  background: rgba(255, 200, 0, 0.3);
+  border: 2px solid rgba(255, 200, 0, 0.6);
+}
+
+.plano-safra-content {
+  padding: 60px 20px;
+  background: #f8f9fa;
+}
+
+.plano-safra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.plano-safra-form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.plano-safra-form-card h2 {
+  color: #2d5016;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.form-description {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.form-group label i {
+  color: #4a7c2c;
+  margin-right: 0.5rem;
+}
+
+.form-group textarea,
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group textarea:focus,
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4a7c2c;
+}
+
+.form-group textarea:disabled,
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-hint {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: #4a7c2c;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #3a6322;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 124, 44, 0.3);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.examples-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.examples-section h3 {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.example-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chip:hover:not(:disabled) {
+  background: #4a7c2c;
+  color: white;
+  border-color: #4a7c2c;
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.plano-safra-benefits {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.plano-safra-benefits h3 {
+  color: #2d5016;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.benefit-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.benefit-item i {
+  font-size: 1.5rem;
+  color: #4a7c2c;
+  margin-top: 5px;
+}
+
+.benefit-item h4 {
+  margin: 0 0 0.5rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.benefit-item p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.cta-box {
+  background: linear-gradient(135deg, #4a7c2c 0%, #2d5016 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.cta-box h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.cta-box p {
+  margin: 0 0 1.5rem;
+  opacity: 0.95;
+}
+
+.btn-cta {
+  background: white;
+  color: #4a7c2c;
+  font-weight: 700;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plano-safra-result {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 30px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.result-header h2 {
+  color: #2d5016;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-prompt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff3cd;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #ffc107;
+}
+
+.login-prompt i {
+  color: #ffc107;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #4a7c2c;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.result-content {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.markdown-content {
+  line-height: 1.8;
+}
+
+.markdown-content h1,
+.markdown-content h2 {
+  color: #2d5016;
+  margin-top: 1.5rem;
+}
+
+.markdown-content h3 {
+  color: #4a7c2c;
+}
+
+.markdown-content ul {
+  margin-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin: 0.5rem 0;
+}
+
+.result-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  background: white;
+  color: #4a7c2c;
+  border: 2px solid #4a7c2c;
+}
+
+.btn-outline:hover {
+  background: #4a7c2c;
+  color: white;
+}
+
+.lead-conversion-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+  padding: 60px 20px;
+  color: white;
+}
+
+.conversion-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.conversion-content h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.conversion-content p {
+  margin: 0 0 1.5rem;
+  opacity: 0.95;
+  font-size: 1.1rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+}
+
+.features-list i {
+  color: #90ee90;
+}
+
+.conversion-cta {
+  text-align: center;
+}
+
+.btn-large {
+  padding: 16px 40px;
+  font-size: 1.2rem;
+}
+
+.login-link {
+  margin-top: 1rem;
+  opacity: 0.9;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.logged-in-message {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logged-in-message i {
+  font-size: 2rem;
+  color: #90ee90;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .plano-safra-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .conversion-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .plano-safra-hero h1 {
+    font-size: 2rem;
+  }
+
+  .plano-safra-hero .subtitle {
+    font-size: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Enhanced Markdown Rendering for Result Content */
+.plano-safra-page .markdown-content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.plano-safra-page .markdown-content h1,
+.plano-safra-page .markdown-content h2,
+.plano-safra-page .markdown-content h3,
+.plano-safra-page .markdown-content h4 {
+  margin: 1.25rem 0 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.plano-safra-page .markdown-content h1 {
+  font-size: 1.6rem;
+  color: #2d5016;
+  border-bottom: 3px solid #4a7c2c;
+  padding-bottom: 0.5rem;
+}
+
+.plano-safra-page .markdown-content h2 {
+  font-size: 1.4rem;
+  color: #2d5016;
+}
+
+.plano-safra-page .markdown-content h3 {
+  font-size: 1.2rem;
+  color: #4a7c2c;
+}
+
+.plano-safra-page .markdown-content h4 {
+  font-size: 1.1rem;
+  color: #4a7c2c;
+}
+
+.plano-safra-page .markdown-content p {
+  margin: 0.75rem 0;
+}
+
+.plano-safra-page .markdown-content ul,
+.plano-safra-page .markdown-content ol {
+  margin: 0.75rem 0;
+  padding-left: 2rem;
+}
+
+.plano-safra-page .markdown-content li {
+  margin: 0.5rem 0;
+}
+
+.plano-safra-page .markdown-content ul ul,
+.plano-safra-page .markdown-content ol ul,
+.plano-safra-page .markdown-content ul ol,
+.plano-safra-page .markdown-content ol ol {
+  margin: 0.25rem 0;
+}
+
+.plano-safra-page .markdown-content strong {
+  font-weight: 700;
+  color: #2d5016;
+}
+
+.plano-safra-page .markdown-content em {
+  font-style: italic;
+  color: #666;
+}
+
+.plano-safra-page .markdown-content blockquote {
+  border-left: 4px solid #4a7c2c;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #555;
+  background: rgba(74, 124, 44, 0.05);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.plano-safra-page .markdown-content code {
+  background: rgba(74, 124, 44, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #2d5016;
+}
+
+.plano-safra-page .markdown-content pre {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid #e0e0e0;
+}
+
+.plano-safra-page .markdown-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.plano-safra-page .markdown-content hr {
+  border: none;
+  border-top: 2px solid #e0e0e0;
+  margin: 1.5rem 0;
+}
+
+.plano-safra-page .markdown-content a {
+  color: #4a7c2c;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.plano-safra-page .markdown-content a:hover {
+  border-bottom-color: #4a7c2c;
+}
+
+.plano-safra-page .markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  border: 1px solid #e0e0e0;
+}
+
+.plano-safra-page .markdown-content th,
+.plano-safra-page .markdown-content td {
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.plano-safra-page .markdown-content th {
+  background: rgba(74, 124, 44, 0.1);
+  font-weight: 600;
+  color: #2d5016;
+}
+
+.plano-safra-page .markdown-content tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* First element spacing */
+.plano-safra-page .markdown-content > *:first-child {
+  margin-top: 0;
+}
+
+.plano-safra-page .markdown-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Enhance list styling */
+.plano-safra-page .markdown-content ul li::marker {
+  color: #4a7c2c;
+}
+
+.plano-safra-page .markdown-content ol li::marker {
+  color: #4a7c2c;
+  font-weight: 600;
+}

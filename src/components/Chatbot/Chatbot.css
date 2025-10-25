@@ -308,3 +308,157 @@
     padding: 0.4rem 0.6rem;
   }
 }
+
+/* Markdown Response Styles */
+.markdown-response {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.markdown-response h1,
+.markdown-response h2,
+.markdown-response h3,
+.markdown-response h4 {
+  margin: 0.75rem 0 0.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  line-height: 1.3;
+}
+
+.markdown-response h1 {
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.25rem;
+}
+
+.markdown-response h2 {
+  font-size: 1.1rem;
+}
+
+.markdown-response h3 {
+  font-size: 1rem;
+}
+
+.markdown-response h4 {
+  font-size: 0.95rem;
+}
+
+.markdown-response p {
+  margin: 0.5rem 0;
+}
+
+.markdown-response ul,
+.markdown-response ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown-response li {
+  margin: 0.25rem 0;
+}
+
+.markdown-response ul ul,
+.markdown-response ol ul,
+.markdown-response ul ol,
+.markdown-response ol ol {
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+}
+
+.markdown-response strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.markdown-response em {
+  font-style: italic;
+}
+
+.markdown-response code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+.markdown-response pre {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.75rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.markdown-response pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown-response blockquote {
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.markdown-response a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.markdown-response a:hover {
+  text-decoration: underline;
+}
+
+.markdown-response hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 1rem 0;
+}
+
+.markdown-response table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.markdown-response th,
+.markdown-response td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.markdown-response th {
+  background: rgba(46, 125, 50, 0.1);
+  font-weight: 600;
+}
+
+/* Emoji support */
+.markdown-response img[alt*="emoji"] {
+  display: inline;
+  height: 1em;
+  width: 1em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.1em;
+}
+
+/* First paragraph special styling */
+.markdown-response > p:first-child {
+  font-weight: 500;
+  margin-top: 0;
+}
+
+/* Remove margins from first/last elements */
+.markdown-response > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-response > *:last-child {
+  margin-bottom: 0;
+}
