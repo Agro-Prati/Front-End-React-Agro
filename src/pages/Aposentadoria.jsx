@@ -101,7 +101,8 @@ export default function Aposentadoria() {
               <div className="aposentadoria-form-card">
                 <h2>Seus Dados</h2>
                 <p className="form-description">
-                  Preencha as informações abaixo para calcular sua estimativa de aposentadoria rural.
+                  Preencha as informações abaixo para calcular sua estimativa de aposentadoria
+                  rural.
                 </p>
 
                 <form onSubmit={handleCalculate}>
@@ -154,9 +155,7 @@ export default function Aposentadoria() {
                       max="80"
                       disabled={isLoading}
                     />
-                    <small className="form-hint">
-                      💡 Anos comprovados de trabalho no campo
-                    </small>
+                    <small className="form-hint">💡 Anos comprovados de trabalho no campo</small>
                   </div>
 
                   <div className="form-group">
@@ -178,9 +177,7 @@ export default function Aposentadoria() {
                       </option>
                       <option value="trabalhador avulso rural">Trabalhador Avulso Rural</option>
                     </select>
-                    <small className="form-hint">
-                      💡 Não sabe qual é? Consulte o INSS
-                    </small>
+                    <small className="form-hint">💡 Não sabe qual é? Consulte o INSS</small>
                   </div>
 
                   <div className="form-actions">

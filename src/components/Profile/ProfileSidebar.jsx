@@ -7,30 +7,24 @@ const ProfileSidebar = ({ alertas, recomendacoes, getPrioridadeColor }) => {
     <div className="profile-sidebar">
       {/* Alertas */}
       <div className="profile-sidebar-card">
-        <h3 className="profile-sidebar-title">
-          🔔 Alertas
-        </h3>
+        <h3 className="profile-sidebar-title">🔔 Alertas</h3>
 
         <div className="profile-alerts-list">
-          {alertas.map(alerta => (
+          {alertas.map((alerta) => (
             <div
               key={alerta.id}
               className="profile-alert-item"
               style={{
-                borderLeftColor: getPrioridadeColor(alerta.prioridade)
+                borderLeftColor: getPrioridadeColor(alerta.prioridade),
               }}
             >
-              <h4 className="profile-alert-title">
-                {alerta.titulo}
-              </h4>
-              <p className="profile-alert-message">
-                {alerta.mensagem}
-              </p>
+              <h4 className="profile-alert-title">{alerta.titulo}</h4>
+              <p className="profile-alert-message">{alerta.mensagem}</p>
               <span
                 className="profile-alert-badge"
                 style={{
                   background: getPrioridadeColor(alerta.prioridade) + '20',
-                  color: getPrioridadeColor(alerta.prioridade)
+                  color: getPrioridadeColor(alerta.prioridade),
                 }}
               >
                 {alerta.prioridade}
@@ -42,25 +36,19 @@ const ProfileSidebar = ({ alertas, recomendacoes, getPrioridadeColor }) => {
 
       {/* Recomendações */}
       <div className="profile-sidebar-card">
-        <h3 className="profile-sidebar-title">
-          💡 Recomendações
-        </h3>
+        <h3 className="profile-sidebar-title">💡 Recomendações</h3>
 
         <div className="profile-recommendations-list">
-          {recomendacoes.slice(0, 2).map(recomendacao => (
+          {recomendacoes.slice(0, 2).map((recomendacao) => (
             <div key={recomendacao.id} className="profile-recommendation-item">
-              <h4 className="profile-recommendation-title">
-                {recomendacao.titulo}
-              </h4>
-              <p className="profile-recommendation-desc">
-                {recomendacao.descricao}
-              </p>
+              <h4 className="profile-recommendation-title">{recomendacao.titulo}</h4>
+              <p className="profile-recommendation-desc">{recomendacao.descricao}</p>
               <div className="profile-recommendation-footer">
                 <span
                   className="profile-recommendation-badge"
                   style={{
                     background: getPrioridadeColor(recomendacao.prioridade) + '20',
-                    color: getPrioridadeColor(recomendacao.prioridade)
+                    color: getPrioridadeColor(recomendacao.prioridade),
                   }}
                 >
                   {recomendacao.prioridade}

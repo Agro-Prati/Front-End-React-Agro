@@ -70,7 +70,7 @@
     bottom: 10px;
     transform: none;
   }
-  
+
   .chatbot-widget.expanded.open {
     transform: none;
   }
@@ -796,7 +796,7 @@
 }
 
 /* Emoji support */
-.markdown-response img[alt*="emoji"] {
+.markdown-response img[alt*='emoji'] {
   display: inline;
   height: 1em;
   width: 1em;
@@ -880,4 +880,3 @@
     font-size: 0.9rem;
   }
 }
-

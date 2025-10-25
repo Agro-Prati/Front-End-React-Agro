@@ -33,15 +33,15 @@ function App() {
           <Route path="/aposentadoria" element={<Aposentadoria />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          
+
           {/* Rotas protegidas - requerem autenticação */}
-          <Route 
-            path="/profile" 
+          <Route
+            path="/profile"
             element={
               <ProtectedRoute>
                 <Profile />
               </ProtectedRoute>
-            } 
+            }
           />
         </Routes>
       </AuthProvider>

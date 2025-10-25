@@ -5,12 +5,10 @@
 const ProfileActivity = ({ atividadesRecentes, getStatusColor }) => {
   return (
     <div className="profile-activity-card">
-      <h2 className="profile-section-title">
-        Atividades Recentes
-      </h2>
+      <h2 className="profile-section-title">Atividades Recentes</h2>
 
       <div className="profile-activity-list">
-        {atividadesRecentes.map(atividade => (
+        {atividadesRecentes.map((atividade) => (
           <div key={atividade.id} className="profile-activity-item">
             <div className="profile-activity-info">
               <h4 className="profile-activity-title">
@@ -25,7 +23,7 @@ const ProfileActivity = ({ atividadesRecentes, getStatusColor }) => {
               className="profile-activity-status"
               style={{
                 background: getStatusColor(atividade.status) + '20',
-                color: getStatusColor(atividade.status)
+                color: getStatusColor(atividade.status),
               }}
             >
               {atividade.status}

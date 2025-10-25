@@ -19,7 +19,7 @@ export const isValidToken = () => {
   if (!token || token === 'undefined' || token === 'null') {
     return false;
   }
-  
+
   // Verifica se o token tem o formato JWT (3 partes separadas por ponto)
   const parts = token.split('.');
   return parts.length === 3;
@@ -32,7 +32,7 @@ export const cleanInvalidData = () => {
   if (!isValidToken()) {
     clearAuthData();
   }
-  
+
   const storedUser = localStorage.getItem('user');
   if (storedUser === 'undefined' || storedUser === 'null') {
     localStorage.removeItem('user');

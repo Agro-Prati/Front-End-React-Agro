@@ -26,11 +26,10 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
   // Mensagem inicial de boas-vindas e verificar modo do chatbot
   useEffect(() => {
     const chatbotInfo = getChatbotInfo();
-    
-    const modeIndicator = chatbotInfo.mode === 'real' 
-      ? '🤖 (IA Real - Google Gemini)' 
-      : '💬 (Modo Demo)';
-    
+
+    const modeIndicator =
+      chatbotInfo.mode === 'real' ? '🤖 (IA Real - Google Gemini)' : '💬 (Modo Demo)';
+
     const welcomeMessage = {
       id: Date.now(),
       type: 'bot',
@@ -136,11 +135,11 @@ const Chatbot = ({ initialOpen = false, onToggle }) => {
             <span>AgroBot</span>
           </div>
           <div className="chatbot-actions">
-            <button 
-              className="chatbot-expand" 
-              onClick={toggleExpand} 
-              aria-label={isExpanded ? "Minimizar chat" : "Expandir chat"}
-              title={isExpanded ? "Minimizar" : "Expandir"}
+            <button
+              className="chatbot-expand"
+              onClick={toggleExpand}
+              aria-label={isExpanded ? 'Minimizar chat' : 'Expandir chat'}
+              title={isExpanded ? 'Minimizar' : 'Expandir'}
             >
               <i className={isExpanded ? 'fas fa-compress' : 'fas fa-expand'}></i>
             </button>

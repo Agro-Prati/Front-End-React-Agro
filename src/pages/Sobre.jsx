@@ -12,15 +12,15 @@ function SobrePage() {
         <div style={{ maxWidth: '800px', margin: '2rem auto', textAlign: 'left' }}>
           <h2>Nossa Missão</h2>
           <p>
-            A Agro+Prati tem como objetivo transformar o setor agrícola através da integração
-            de tecnologias avançadas, proporcionando aos produtores rurais ferramentas
-            inovadoras para aumentar a produtividade e sustentabilidade.
+            A Agro+Prati tem como objetivo transformar o setor agrícola através da integração de
+            tecnologias avançadas, proporcionando aos produtores rurais ferramentas inovadoras para
+            aumentar a produtividade e sustentabilidade.
           </p>
 
           <h2>Nossa Visão</h2>
           <p>
-            Ser referência nacional em soluções tecnológicas para o agronegócio,
-            contribuindo para um futuro mais sustentável e produtivo.
+            Ser referência nacional em soluções tecnológicas para o agronegócio, contribuindo para
+            um futuro mais sustentável e produtivo.
           </p>
 
           <h2>Nossos Valores</h2>

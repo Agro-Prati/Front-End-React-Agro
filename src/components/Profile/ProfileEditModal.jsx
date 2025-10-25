@@ -2,27 +2,13 @@
  * Modal de edição do perfil do usuário
  * Permite editar nome, telefone, cidade, estado e descrição
  */
-const ProfileEditModal = ({ 
-  show, 
-  onClose, 
-  formData, 
-  onChange, 
-  onSubmit 
-}) => {
+const ProfileEditModal = ({ show, onClose, formData, onChange, onSubmit }) => {
   if (!show) return null;
 
   return (
-    <div 
-      className="profile-modal-overlay"
-      onClick={onClose}
-    >
-      <div 
-        className="profile-modal-content"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h2 className="profile-modal-title">
-          Editar Perfil
-        </h2>
+    <div className="profile-modal-overlay" onClick={onClose}>
+      <div className="profile-modal-content" onClick={(e) => e.stopPropagation()}>
+        <h2 className="profile-modal-title">Editar Perfil</h2>
 
         <form onSubmit={onSubmit} className="profile-modal-form">
           <div className="profile-form-group">
@@ -99,17 +85,10 @@ const ProfileEditModal = ({
           </div>
 
           <div className="profile-modal-buttons">
-            <button
-              type="submit"
-              className="profile-modal-submit"
-            >
+            <button type="submit" className="profile-modal-submit">
               Salvar
             </button>
-            <button
-              type="button"
-              onClick={onClose}
-              className="profile-modal-cancel"
-            >
+            <button type="button" onClick={onClose} className="profile-modal-cancel">
               Cancelar
             </button>
           </div>

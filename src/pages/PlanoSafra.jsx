@@ -51,7 +51,9 @@ export default function PlanoSafra() {
       }
     } catch (error) {
       console.error('Erro ao gerar plano de safra:', error);
-      setPlano(`❌ **Erro ao gerar plano de safra**\n\n${error.message}\n\nPor favor, tente novamente.`);
+      setPlano(
+        `❌ **Erro ao gerar plano de safra**\n\n${error.message}\n\nPor favor, tente novamente.`
+      );
     } finally {
       setIsLoading(false);
     }
@@ -66,13 +68,14 @@ export default function PlanoSafra() {
   return (
     <div className="page-container">
       <Header />
-      
+
       <main className="plano-safra-page">
         <section className="plano-safra-hero">
           <div className="container">
             <h1>🌾 Planejador de Safra Inteligente</h1>
             <p className="subtitle">
-              Crie um plano de safra personalizado com inteligência artificial para maximizar sua produção
+              Crie um plano de safra personalizado com inteligência artificial para maximizar sua
+              produção
             </p>
             <div className="mode-badge">
               {chatbotInfo.mode === 'real' ? (
@@ -91,8 +94,8 @@ export default function PlanoSafra() {
               <div className="plano-safra-form-card">
                 <h2>Informe suas Culturas</h2>
                 <p className="form-description">
-                  Digite as culturas que você deseja plantar, separadas por vírgula. 
-                  Nossa IA criará um plano completo e personalizado.
+                  Digite as culturas que você deseja plantar, separadas por vírgula. Nossa IA criará
+                  um plano completo e personalizado.
                 </p>
 
                 <form onSubmit={handleGeneratePlano}>
@@ -216,11 +219,11 @@ export default function PlanoSafra() {
                 {!user && (
                   <div className="cta-box">
                     <h4>🎯 Quer salvar seus planos?</h4>
-                    <p>Crie uma conta grátis e tenha acesso ao histórico completo dos seus planos de safra!</p>
-                    <button
-                      className="btn btn-cta"
-                      onClick={() => navigate('/cadastro')}
-                    >
+                    <p>
+                      Crie uma conta grátis e tenha acesso ao histórico completo dos seus planos de
+                      safra!
+                    </p>
+                    <button className="btn btn-cta" onClick={() => navigate('/cadastro')}>
                       Criar Conta Grátis
                     </button>
                   </div>
@@ -239,16 +242,13 @@ export default function PlanoSafra() {
                     <div className="login-prompt">
                       <i className="fas fa-star"></i>
                       <span>Gostou? Cadastre-se para salvar este plano!</span>
-                      <button
-                        className="btn-link"
-                        onClick={() => navigate('/cadastro')}
-                      >
+                      <button className="btn-link" onClick={() => navigate('/cadastro')}>
                         Criar Conta →
                       </button>
                     </div>
                   )}
                 </div>
-                
+
                 <div className="result-content markdown-content">
                   <ReactMarkdown>{plano}</ReactMarkdown>
                 </div>
@@ -284,14 +284,22 @@ export default function PlanoSafra() {
               <div className="conversion-content">
                 <h2>🚀 Impulsione sua Produção</h2>
                 <p>
-                  Gostou do planejador? Imagine ter acesso a especialistas, histórico de planos, 
+                  Gostou do planejador? Imagine ter acesso a especialistas, histórico de planos,
                   alertas climáticos personalizados e muito mais!
                 </p>
                 <ul className="features-list">
-                  <li><i className="fas fa-check"></i> Histórico de todos os planos gerados</li>
-                  <li><i className="fas fa-check"></i> Alertas climáticos para sua região</li>
-                  <li><i className="fas fa-check"></i> Conexão com especialistas</li>
-                  <li><i className="fas fa-check"></i> Dashboard com indicadores de performance</li>
+                  <li>
+                    <i className="fas fa-check"></i> Histórico de todos os planos gerados
+                  </li>
+                  <li>
+                    <i className="fas fa-check"></i> Alertas climáticos para sua região
+                  </li>
+                  <li>
+                    <i className="fas fa-check"></i> Conexão com especialistas
+                  </li>
+                  <li>
+                    <i className="fas fa-check"></i> Dashboard com indicadores de performance
+                  </li>
                 </ul>
               </div>
               <div className="conversion-cta">

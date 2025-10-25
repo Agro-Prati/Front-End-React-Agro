@@ -8,26 +8,26 @@ const ProfileStats = ({ metricas }) => {
       icon: '📊',
       value: `${metricas.produtividadeAtual}%`,
       label: 'Produtividade Atual',
-      color: 'var(--primary-light)'
+      color: 'var(--primary-light)',
     },
     {
       icon: '💧',
       value: `${metricas.economiaAgua}%`,
       label: 'Economia de Água',
-      color: 'var(--success-color)'
+      color: 'var(--success-color)',
     },
     {
       icon: '🌱',
       value: `${metricas.reducaoAgrotoxicos}%`,
       label: 'Redução Agroquímicos',
-      color: 'var(--warning-color)'
+      color: 'var(--warning-color)',
     },
     {
       icon: '🏆',
       value: metricas.certificacoesObtidas,
       label: 'Certificações Obtidas',
-      color: 'var(--info-color)'
-    }
+      color: 'var(--info-color)',
+    },
   ];
 
   return (
@@ -37,12 +37,8 @@ const ProfileStats = ({ metricas }) => {
           <div className="profile-stat-icon" style={{ background: stat.color }}>
             {stat.icon}
           </div>
-          <h3 className="profile-stat-value">
-            {stat.value}
-          </h3>
-          <p className="profile-stat-label">
-            {stat.label}
-          </p>
+          <h3 className="profile-stat-value">{stat.value}</h3>
+          <p className="profile-stat-label">{stat.label}</p>
         </div>
       ))}
     </div>

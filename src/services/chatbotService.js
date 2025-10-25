@@ -1,6 +1,6 @@
 /**
  * Serviço para integração com a API do Chatbot (Flask + Gemini)
- * 
+ *
  * Este serviço gerencia a comunicação com o backend do chatbot,
  * com fallback para respostas hardcoded quando a API real não estiver disponível.
  */
@@ -83,7 +83,12 @@ const generateHardcodedResponse = (userMessage) => {
   }
 
   // Plantio
-  if (msg.includes('plantio') || msg.includes('plantar') || msg.includes('semear') || msg.includes('cultivar')) {
+  if (
+    msg.includes('plantio') ||
+    msg.includes('plantar') ||
+    msg.includes('semear') ||
+    msg.includes('cultivar')
+  ) {
     return getRandomMessage(HARDCODED_RESPONSES.plantio);
   }
 
@@ -184,7 +189,7 @@ export const sendChatMessage = async (message) => {
     }
 
     const data = await response.json();
-    
+
     // A API retorna {answer: "..."}
     if (data.answer) {
       return data.answer;
@@ -195,7 +200,7 @@ export const sendChatMessage = async (message) => {
     }
   } catch (error) {
     console.error('❌ Erro ao chamar API do chatbot:', error);
-    
+
     // Fallback para respostas hardcoded em caso de erro
     console.log('⚠️ Usando fallback para respostas hardcoded');
     return generateHardcodedResponse(message);
@@ -216,11 +221,11 @@ export const generatePlanoSafra = async (culturas) => {
   if (!USE_REAL_CHATBOT) {
     console.log('🌾 Gerando plano de safra hardcoded');
     await new Promise((resolve) => setTimeout(resolve, 1200));
-    
+
     return `# 🌾 Plano de Safra Personalizado
 
 ## Culturas Selecionadas
-${culturas.map(c => `- ${c}`).join('\n')}
+${culturas.map((c) => `- ${c}`).join('\n')}
 
 ## Cronograma Recomendado
 
@@ -230,11 +235,15 @@ ${culturas.map(c => `- ${c}`).join('\n')}
 - **Tratos Culturais**: Monitoramento quinzenal de pragas
 - **Colheita Estimada**: Março a abril
 
-${culturas.length > 1 ? `### ${culturas[1]}
+${
+  culturas.length > 1
+    ? `### ${culturas[1]}
 - **Preparo do Solo**: Início de agosto
 - **Plantio**: Setembro a outubro
 - **Tratos Culturais**: Adubação e irrigação regular
-- **Colheita Estimada**: Janeiro a fevereiro` : ''}
+- **Colheita Estimada**: Janeiro a fevereiro`
+    : ''
+}
 
 ## Dicas Importantes
 - Monitore as condições climáticas constantemente
@@ -263,7 +272,7 @@ ${culturas.length > 1 ? `### ${culturas[1]}
     }
 
     const data = await response.json();
-    
+
     if (data.answer) {
       return data.answer;
     } else if (data.error) {
@@ -303,7 +312,7 @@ export const calcularAposentadoria = async (dados) => {
     const tempoMinimo = 15;
     const tempoFaltante = Math.max(0, tempoMinimo - tempoTrabalhoRural);
     const idadeFaltante = Math.max(0, idadeAposentadoria - idade);
-    
+
     const podeAposentar = tempoFaltante === 0 && idadeFaltante === 0;
 
     return `# 📊 Estimativa de Aposentadoria Rural
@@ -319,9 +328,10 @@ export const calcularAposentadoria = async (dados) => {
 - **Tempo mínimo de contribuição**: ${tempoMinimo} anos
 
 ## Situação Atual
-${podeAposentar 
-  ? '✅ **Você já pode se aposentar!**\n\nRecomendamos procurar o INSS para dar entrada no benefício.'
-  : `⏳ **Ainda não pode se aposentar**
+${
+  podeAposentar
+    ? '✅ **Você já pode se aposentar!**\n\nRecomendamos procurar o INSS para dar entrada no benefício.'
+    : `⏳ **Ainda não pode se aposentar**
 
 **Falta:**
 ${idadeFaltante > 0 ? `- ${idadeFaltante} anos de idade` : ''}
@@ -360,7 +370,7 @@ ${tempoFaltante > 0 ? `- ${tempoFaltante} anos de tempo de contribuição` : ''}
     }
 
     const data = await response.json();
-    
+
     if (data.answer) {
       return data.answer;
     } else if (data.error) {

@@ -7,7 +7,9 @@ describe('Parceiros', () => {
   it('renders title and subtitle', () => {
     render(<Parceiros />);
     expect(screen.getByText('Nossos Parceiros')).toBeInTheDocument();
-    expect(screen.getByText('Empresas e instituições que confiam em nossas soluções')).toBeInTheDocument();
+    expect(
+      screen.getByText('Empresas e instituições que confiam em nossas soluções')
+    ).toBeInTheDocument();
   });
 
   it('renders partner logos', () => {

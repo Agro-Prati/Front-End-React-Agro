@@ -8,7 +8,7 @@ import {
   ProfileStats,
   ProfileActivity,
   ProfileSidebar,
-  ProfileEditModal
+  ProfileEditModal,
 } from '../components/Profile';
 import '../components/Profile/Profile.css';
 
@@ -20,17 +20,17 @@ function Profile() {
     phone: user?.phone || '',
     city: user?.city || '',
     state: user?.state || '',
-    description: user?.description || ''
+    description: user?.description || '',
   });
 
   // Mapear tipo de usuário para texto amigável
   const getTipoUsuarioText = (tipo) => {
     const tipos = {
-      'AGRICULTOR': 'Agricultor',
-      'AGRONOMO': 'Agrônomo',
-      'VETERINARIO': 'Veterinário',
-      'ZOOTECNISTA': 'Zootecnista',
-      'ESTUDANTE': 'Estudante'
+      AGRICULTOR: 'Agricultor',
+      AGRONOMO: 'Agrônomo',
+      VETERINARIO: 'Veterinário',
+      ZOOTECNISTA: 'Zootecnista',
+      ESTUDANTE: 'Estudante',
     };
     return tipos[tipo] || tipo;
   };
@@ -51,16 +51,16 @@ function Profile() {
       phone: user?.phone || '',
       city: user?.city || '',
       state: user?.state || '',
-      description: user?.description || ''
+      description: user?.description || '',
     });
     setShowEditModal(true);
   };
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
-    setEditFormData(prev => ({
+    setEditFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -77,38 +77,57 @@ function Profile() {
     areaUtilizada: 120,
     economiaAgua: 25,
     reducaoAgrotoxicos: 40,
-    certificacoesObtidas: 3
+    certificacoesObtidas: 3,
   });
 
   const [atividadesRecentes] = useState([
     { id: 1, tipo: 'Plantio', cultura: 'Soja', data: '2024-09-15', status: 'Concluído' },
-    { id: 2, tipo: 'Consultoria', titulo: 'Análise de Solo', data: '2024-09-12', status: 'Em Andamento' },
-    { id: 3, tipo: 'Curso', titulo: 'Técnicas de Irrigação', data: '2024-09-10', status: 'Concluído' },
-    { id: 4, tipo: 'Monitoramento', titulo: 'Clima e Previsões', data: '2024-09-08', status: 'Ativo' }
+    {
+      id: 2,
+      tipo: 'Consultoria',
+      titulo: 'Análise de Solo',
+      data: '2024-09-12',
+      status: 'Em Andamento',
+    },
+    {
+      id: 3,
+      tipo: 'Curso',
+      titulo: 'Técnicas de Irrigação',
+      data: '2024-09-10',
+      status: 'Concluído',
+    },
+    {
+      id: 4,
+      tipo: 'Monitoramento',
+      titulo: 'Clima e Previsões',
+      data: '2024-09-08',
+      status: 'Ativo',
+    },
   ]);
 
   const [recomendacoes] = useState([
     {
       id: 1,
       titulo: 'Otimização de Irrigação',
-      descricao: 'Baseado na sua localização, recomendamos implementar sistema de irrigação por gotejamento.',
+      descricao:
+        'Baseado na sua localização, recomendamos implementar sistema de irrigação por gotejamento.',
       prioridade: 'Alta',
-      economiaPotencial: 'R$ 15.000/ano'
+      economiaPotencial: 'R$ 15.000/ano',
     },
     {
       id: 2,
       titulo: 'Rotação de Culturas',
       descricao: 'Implementar rotação soja-milho pode aumentar a produtividade em até 20%.',
       prioridade: 'Média',
-      economiaPotencial: 'R$ 8.000/ano'
+      economiaPotencial: 'R$ 8.000/ano',
     },
     {
       id: 3,
       titulo: 'Certificação Orgânica',
       descricao: 'Seu perfil se qualifica para certificação orgânica. Aumento no preço de venda.',
       prioridade: 'Baixa',
-      economiaPotencial: 'R$ 25.000/ano'
-    }
+      economiaPotencial: 'R$ 25.000/ano',
+    },
   ]);
 
   const [alertas] = useState([
@@ -118,7 +137,7 @@ function Profile() {
       titulo: 'Previsão de Chuva Intensa',
       mensagem: 'Chuva intensa prevista para os próximos 3 dias. Considere adiar pulverização.',
       prioridade: 'Alta',
-      data: '2024-09-17'
+      data: '2024-09-17',
     },
     {
       id: 2,
@@ -126,25 +145,33 @@ function Profile() {
       titulo: 'Monitoramento de Lagarta',
       mensagem: 'Aumento na população de lagarta-do-cartucho na região.',
       prioridade: 'Média',
-      data: '2024-09-16'
-    }
+      data: '2024-09-16',
+    },
   ]);
 
   const getPrioridadeColor = (prioridade) => {
     switch (prioridade) {
-      case 'Alta': return '#f44336';
-      case 'Média': return '#ff9800';
-      case 'Baixa': return '#4caf50';
-      default: return '#666';
+      case 'Alta':
+        return '#f44336';
+      case 'Média':
+        return '#ff9800';
+      case 'Baixa':
+        return '#4caf50';
+      default:
+        return '#666';
     }
   };
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Concluído': return '#4caf50';
-      case 'Em Andamento': return '#2196f3';
-      case 'Ativo': return '#ff9800';
-      default: return '#666';
+      case 'Concluído':
+        return '#4caf50';
+      case 'Em Andamento':
+        return '#2196f3';
+      case 'Ativo':
+        return '#ff9800';
+      default:
+        return '#666';
     }
   };
 
@@ -153,9 +180,8 @@ function Profile() {
       <Header />
       <main className="page-main-no-center">
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
-
           {/* Header do Perfil */}
-          <ProfileHeader 
+          <ProfileHeader
             user={user}
             onEditClick={handleEditClick}
             getTipoUsuarioText={getTipoUsuarioText}
@@ -166,26 +192,27 @@ function Profile() {
           <ProfileStats metricas={metricas} />
 
           {/* Grid de Conteúdo Principal */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '2fr 1fr',
+              gap: '2rem',
+              marginBottom: '2rem',
+            }}
+          >
             {/* Atividades Recentes */}
-            <ProfileActivity 
+            <ProfileActivity
               atividadesRecentes={atividadesRecentes}
               getStatusColor={getStatusColor}
             />
 
             {/* Alertas e Recomendações */}
-            <ProfileSidebar 
+            <ProfileSidebar
               alertas={alertas}
               recomendacoes={recomendacoes}
               getPrioridadeColor={getPrioridadeColor}
             />
           </div>
-
         </div>
       </main>
 

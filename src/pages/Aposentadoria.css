@@ -31,11 +31,11 @@
     padding: 100px 20px 50px;
     margin-top: 70px;
   }
-  
+
   .aposentadoria-hero h1 {
     font-size: 2rem;
   }
-  
+
   .aposentadoria-hero .subtitle {
     font-size: 1.1rem;
   }
@@ -46,11 +46,11 @@
     padding: 80px 16px 40px;
     margin-top: 60px;
   }
-  
+
   .aposentadoria-hero h1 {
     font-size: 1.75rem;
   }
-  
+
   .aposentadoria-hero .subtitle {
     font-size: 1rem;
   }
@@ -402,4 +402,355 @@
 .aposentadoria-page .markdown-content ol li::marker {
   color: #3b82f6;
   font-weight: 600;
+}
+
+/* Result Components */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.result-header h2 {
+  color: var(--primary-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-content {
+  padding: 20px;
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.markdown-content {
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+.markdown-content h1,
+.markdown-content h2 {
+  color: var(--primary-dark);
+  margin-top: 1.5rem;
+}
+
+.markdown-content h3 {
+  color: var(--primary-color);
+}
+
+.markdown-content ul {
+  margin-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin: 0.5rem 0;
+}
+
+.result-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.login-prompt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff3cd;
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid #ffc107;
+}
+
+.login-prompt i {
+  color: #ffc107;
+}
+
+/* Button styles */
+.btn-outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.btn-link:hover {
+  opacity: 0.8;
+}
+
+/* ==============================================
+   TEMA DARK - Dark Theme Support
+   ============================================== */
+
+/* Página principal */
+:root[data-theme='dark'] .aposentadoria-page {
+  background: var(--bg-white);
+  color: var(--text-dark);
+}
+
+/* Hero section */
+:root[data-theme='dark'] .aposentadoria-hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+}
+
+/* Conteúdo */
+:root[data-theme='dark'] .aposentadoria-content {
+  background: #1a1a1a;
+}
+
+/* Cards */
+:root[data-theme='dark'] .aposentadoria-form-card,
+:root[data-theme='dark'] .aposentadoria-info,
+:root[data-theme='dark'] .aposentadoria-result {
+  background: #1f1f1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .aposentadoria-form-card h2,
+:root[data-theme='dark'] .aposentadoria-info h3,
+:root[data-theme='dark'] .aposentadoria-result .result-header h2 {
+  color: #60a5fa;
+}
+
+/* Info items */
+:root[data-theme='dark'] .info-item h4 {
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .info-item p {
+  color: var(--text-light);
+}
+
+:root[data-theme='dark'] .info-item i {
+  color: #60a5fa;
+}
+
+/* Important note */
+:root[data-theme='dark'] .important-note {
+  background: rgba(255, 193, 7, 0.15);
+  border-color: rgba(255, 193, 7, 0.4);
+}
+
+:root[data-theme='dark'] .important-note strong,
+:root[data-theme='dark'] .important-note p {
+  color: #ffd54f;
+}
+
+:root[data-theme='dark'] .important-note i {
+  color: #ffc107;
+}
+
+/* Botões */
+:root[data-theme='dark'] .aposentadoria-page .btn-primary {
+  background: #3b82f6;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .btn-primary:hover:not(:disabled) {
+  background: #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .btn-outline {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .btn-outline:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Formulários */
+:root[data-theme='dark'] .aposentadoria-page .form-group label {
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .form-group label i {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .form-group textarea,
+:root[data-theme='dark'] .aposentadoria-page .form-group input,
+:root[data-theme='dark'] .aposentadoria-page .form-group select {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .form-group textarea:focus,
+:root[data-theme='dark'] .aposentadoria-page .form-group input:focus,
+:root[data-theme='dark'] .aposentadoria-page .form-group select:focus {
+  border-color: #3b82f6;
+  background: #2a2a2a;
+}
+
+/* CTA Box */
+:root[data-theme='dark'] .aposentadoria-page .cta-box {
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .btn-cta {
+  background: white;
+  color: #3b82f6;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .btn-cta:hover {
+  background: #f0f0f0;
+}
+
+/* Links */
+:root[data-theme='dark'] .aposentadoria-page .btn-link {
+  color: #60a5fa;
+}
+
+/* Markdown content */
+:root[data-theme='dark'] .aposentadoria-page .markdown-content {
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content h1,
+:root[data-theme='dark'] .aposentadoria-page .markdown-content h2 {
+  color: #60a5fa;
+  border-color: #3b82f6;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content h3,
+:root[data-theme='dark'] .aposentadoria-page .markdown-content h4 {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content strong {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content em {
+  color: var(--text-light);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content blockquote {
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: #3b82f6;
+  color: var(--text-light);
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content code {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content pre {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content hr {
+  border-top-color: #3a3a3a;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content a {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content a:hover {
+  border-bottom-color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content table {
+  border-color: #3a3a3a;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content th,
+:root[data-theme='dark'] .aposentadoria-page .markdown-content td {
+  border-color: #3a3a3a;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content th {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .aposentadoria-page .markdown-content tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Features list */
+:root[data-theme='dark'] .aposentadoria-page .features-list i {
+  color: #60a5fa;
+}
+
+/* Lead conversion section */
+:root[data-theme='dark'] .aposentadoria-page .lead-conversion-section {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+}
+
+/* Lista markers */
+:root[data-theme='dark'] .aposentadoria-page .markdown-content ul li::marker,
+:root[data-theme='dark'] .aposentadoria-page .markdown-content ol li::marker {
+  color: #60a5fa;
+}
+
+/* Result components */
+:root[data-theme='dark'] .result-header h2 {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .result-content {
+  background: #2a2a2a;
+}
+
+:root[data-theme='dark'] .markdown-content {
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .markdown-content h1,
+:root[data-theme='dark'] .markdown-content h2 {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .markdown-content h3 {
+  color: #60a5fa;
+}
+
+:root[data-theme='dark'] .login-prompt {
+  background: rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.5);
+}
+
+:root[data-theme='dark'] .login-prompt span {
+  color: #ffd54f;
+}
+
+:root[data-theme='dark'] .btn-outline {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+:root[data-theme='dark'] .btn-outline:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+:root[data-theme='dark'] .btn-link {
+  color: #60a5fa;
 }

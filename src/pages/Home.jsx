@@ -16,7 +16,7 @@ function Home() {
       // Verifica se o chatbot já está aberto
       const chatbotWidget = document.querySelector('.chatbot-widget');
       const isAlreadyOpen = chatbotWidget?.classList.contains('open');
-      
+
       // Só clica se não estiver aberto
       if (!isAlreadyOpen) {
         toggleButton.click();

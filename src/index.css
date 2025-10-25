@@ -278,15 +278,23 @@ button {
 
 /* Melhor acessibilidade touch */
 @media (hover: none) and (pointer: coarse) {
-  button, a, input, select, textarea {
+  button,
+  a,
+  input,
+  select,
+  textarea {
     font-size: 16px; /* Previne zoom no iOS */
   }
 }
 
 /* Animação de loading */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Utilitários de responsividade */
@@ -302,14 +310,15 @@ button {
   .mobile-only {
     display: block;
   }
-  
+
   .desktop-only {
     display: none;
   }
 }
 
 /* Prevenir overflow horizontal */
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100vw;
 }

@@ -69,12 +69,12 @@
     font-size: 1.1rem;
     gap: 8px;
   }
-  
+
   /* Ocultar texto "Agro+Prati" no mobile */
   .nav-logo-text {
     display: none;
   }
-  
+
   .nav-logo i {
     font-size: 1.3rem !important;
   }

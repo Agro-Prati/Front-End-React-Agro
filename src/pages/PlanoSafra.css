@@ -516,7 +516,6 @@
   color: var(--primary-light);
 }
 
-
 /* Responsive */
 @media (max-width: 968px) {
   .plano-safra-grid {
