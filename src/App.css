@@ -72,16 +72,23 @@
 /* Utility classes for consistent spacing */
 .page-main {
   min-height: 70vh;
-  padding: 6rem 2rem 2rem 2rem; /* Increased top padding to account for fixed header */
+  padding: 8rem 2rem 2rem 2rem; /* Increased top padding for better spacing in desktop */
   text-align: center;
 }
 
 .page-main-no-center {
   min-height: 70vh;
-  padding: 6rem 2rem 2rem 2rem; /* Increased top padding to account for fixed header */
+  padding: 8rem 2rem 2rem 2rem; /* Increased top padding for better spacing in desktop */
 }
 
 /* Responsividade para páginas */
+@media (max-width: 1024px) {
+  .page-main,
+  .page-main-no-center {
+    padding: 7rem 1.5rem 2rem 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .page-main,
   .page-main-no-center {

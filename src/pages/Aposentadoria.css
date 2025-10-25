@@ -7,8 +7,9 @@
 .aposentadoria-hero {
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
-  padding: 80px 20px 60px;
+  padding: 120px 20px 60px; /* Increased top padding for better spacing */
   text-align: center;
+  margin-top: 80px; /* Account for fixed header */
 }
 
 .aposentadoria-hero h1 {
@@ -22,6 +23,37 @@
   opacity: 0.95;
   max-width: 700px;
   margin: 0 auto 1.5rem;
+}
+
+/* Responsividade do hero */
+@media (max-width: 768px) {
+  .aposentadoria-hero {
+    padding: 100px 20px 50px;
+    margin-top: 70px;
+  }
+  
+  .aposentadoria-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .aposentadoria-hero .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aposentadoria-hero {
+    padding: 80px 16px 40px;
+    margin-top: 60px;
+  }
+  
+  .aposentadoria-hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .aposentadoria-hero .subtitle {
+    font-size: 1rem;
+  }
 }
 
 .aposentadoria-content {
