@@ -5,6 +5,7 @@ import ThemeToggle from '../../components/ui/ThemeToggle/ThemeToggle';
 import LoginButton from '../../components/ui/LoginButton/LoginButton';
 import ProfileButton from '../../components/ui/ProfileButton/ProfileButton';
 import Nav from '../Nav/Nav';
+import folha from '../../assets/folha.png';
 
 const defaultMenu = [
   { label: 'Início', href: '/' },
@@ -52,7 +53,7 @@ export default function Header({ menuItems = defaultMenu }) {
           <Link to="/" className="nav-logo-link">
             <div className="nav-logo">
               <img
-                src="/src/assets/folha.png"
+                src={folha}
                 alt="Agro+Prati Logo"
                 style={{ height: '32px', width: '32px' }}
               />
