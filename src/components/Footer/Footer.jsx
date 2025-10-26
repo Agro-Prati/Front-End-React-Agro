@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import folha from '../../assets/folha.png';
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
           <div className="footer-section">
             <div className="footer-logo">
               <img
-                src="/src/assets/folha.png"
+                src={folha}
                 alt="Agro+Prati Logo"
                 style={{ height: '32px', width: '32px' }}
               />

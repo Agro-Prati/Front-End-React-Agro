@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
 import { useAuth } from '../contexts/useAuth';
+import folha from '../assets/folha.png';
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -120,9 +121,9 @@ function Cadastro() {
             maxWidth: '500px',
           }}
         >
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <img
-              src="/src/assets/folha.png"
+              src={folha}
               alt="Agro+Prati Logo"
               style={{ height: '48px', width: '48px', marginBottom: '1rem' }}
             />

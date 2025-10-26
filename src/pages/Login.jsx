@@ -6,6 +6,7 @@ import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
 import { useAuth } from '../contexts/useAuth';
 import authService from '../services/authService';
+import folha from '../assets/folha.png';
 
 function Login() {
   const navigate = useNavigate();
@@ -106,7 +107,7 @@ function Login() {
         >
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <img
-              src="/src/assets/folha.png"
+              src={folha}
               alt="Agro+Prati Logo"
               style={{ height: '48px', width: '48px', marginBottom: '1rem' }}
             />
