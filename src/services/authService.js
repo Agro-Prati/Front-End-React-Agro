@@ -52,6 +52,16 @@ export const authService = {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   },
+
+  /**
+   * Atualiza o perfil do usuário
+   * @param {Object} profileData - Dados do perfil a atualizar (type, phone, city, state, description)
+   * @returns {Promise<Object>} Dados do usuário atualizado
+   */
+  updateProfile: async (profileData) => {
+    const response = await api.patch('/api/profile', profileData);
+    return response.data;
+  },
 };
 
 export default authService;

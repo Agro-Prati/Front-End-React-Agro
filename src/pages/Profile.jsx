@@ -13,15 +13,16 @@ import {
 import '../components/Profile/Profile.css';
 
 function Profile() {
-  const { user } = useAuth();
+  const { user, updateProfile } = useAuth();
   const [showEditModal, setShowEditModal] = useState(false);
   const [editFormData, setEditFormData] = useState({
-    name: user?.name || '',
+    type: user?.type || '',
     phone: user?.phone || '',
     city: user?.city || '',
     state: user?.state || '',
     description: user?.description || '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Mapear tipo de usuário para texto amigável
   const getTipoUsuarioText = (tipo) => {
@@ -47,7 +48,7 @@ function Profile() {
 
   const handleEditClick = () => {
     setEditFormData({
-      name: user?.name || '',
+      type: user?.type || '',
       phone: user?.phone || '',
       city: user?.city || '',
       state: user?.state || '',
@@ -58,18 +59,49 @@ function Profile() {
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
+    // Converte estado para maiúsculas automaticamente
+    const finalValue = name === 'state' ? value.toUpperCase() : value;
     setEditFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: finalValue,
     }));
   };
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implementar atualização no backend
-    console.log('Dados atualizados:', editFormData);
-    alert('Funcionalidade de atualização será implementada em breve!');
-    setShowEditModal(false);
+    
+    // Validação do estado (deve ser 2 caracteres maiúsculos)
+    if (editFormData.state && !/^[A-Z]{2}$/.test(editFormData.state)) {
+      alert('O estado deve conter exatamente 2 letras maiúsculas (ex: PR, RJ, SP)');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Envia apenas os campos editáveis
+      const profileData = {
+        type: editFormData.type,
+        phone: editFormData.phone,
+        city: editFormData.city,
+        state: editFormData.state,
+        description: editFormData.description,
+      };
+
+      const result = await updateProfile(profileData);
+      
+      if (result.success) {
+        alert('Perfil atualizado com sucesso!');
+        setShowEditModal(false);
+      } else {
+        alert(result.error || 'Erro ao atualizar perfil. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar perfil:', error);
+      alert('Erro ao atualizar perfil. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const [metricas] = useState({
@@ -223,6 +255,7 @@ function Profile() {
         formData={editFormData}
         onChange={handleEditChange}
         onSubmit={handleEditSubmit}
+        isSubmitting={isSubmitting}
       />
 
       <Footer />
