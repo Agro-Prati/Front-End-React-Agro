@@ -322,3 +322,16 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+
+/* Estilização de select para temas - solução simples e consistente */
+:root[data-theme='dark'] select {
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  border-color: var(--border-color);
+}
+
+:root[data-theme='dark'] select option {
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+}
+

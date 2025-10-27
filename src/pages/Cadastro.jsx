@@ -9,6 +9,7 @@ function Cadastro() {
   const navigate = useNavigate();
   const { register } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -75,22 +76,22 @@ function Cadastro() {
     if (validateForm()) {
       setLoading(true);
       setErrors({});
+      setSuccessMessage('');
 
       try {
         const result = await register(formData);
 
         if (result.success) {
-          alert('Conta criada com sucesso! Você já está logado.');
-          navigate('/'); // Redireciona para a home após cadastro
+          setSuccessMessage('Conta criada com sucesso! Redirecionando...');
+          setTimeout(() => {
+            navigate('/', { replace: true });
+          }, 800);
         } else {
-          // Exibe erro do backend
-          setErrors({ submit: result.error });
-          alert(result.error);
+          setErrors({ submit: result.error || 'Erro ao criar conta. Tente novamente.' });
         }
       } catch (error) {
         console.error('Erro ao criar conta:', error);
         setErrors({ submit: 'Erro inesperado ao criar conta. Tente novamente.' });
-        alert('Erro inesperado ao criar conta. Tente novamente.');
       } finally {
         setLoading(false);
       }
@@ -102,11 +103,12 @@ function Cadastro() {
       <Header />
       <main
         style={{
-          minHeight: '70vh',
+          minHeight: 'calc(100vh - 80px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           padding: '2rem',
+          paddingTop: 'calc(80px + 2rem)',
           background: 'var(--bg-light)',
         }}
       >
@@ -162,8 +164,8 @@ function Cadastro() {
                     border: `1px solid ${errors.nome ? '#f44336' : 'var(--border-color)'}`,
                     borderRadius: '6px',
                     fontSize: '1rem',
-                    background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)',
+                    background: 'var(--bg-white)',
+                    color: 'var(--text-dark)',
                   }}
                   placeholder="Seu nome completo"
                 />
@@ -206,8 +208,8 @@ function Cadastro() {
                     border: `1px solid ${errors.telefone ? '#f44336' : 'var(--border-color)'}`,
                     borderRadius: '6px',
                     fontSize: '1rem',
-                    background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)',
+                    background: 'var(--bg-white)',
+                    color: 'var(--text-dark)',
                   }}
                   placeholder="(11) 99999-9999"
                 />
@@ -251,8 +253,8 @@ function Cadastro() {
                   border: `1px solid ${errors.email ? '#f44336' : 'var(--border-color)'}`,
                   borderRadius: '6px',
                   fontSize: '1rem',
-                  background: 'var(--bg-primary)',
-                  color: 'var(--text-primary)',
+                  background: 'var(--bg-white)',
+                  color: 'var(--text-dark)',
                 }}
                 placeholder="seu@email.com"
               />
@@ -293,8 +295,9 @@ function Cadastro() {
                   border: '1px solid var(--border-color)',
                   borderRadius: '6px',
                   fontSize: '1rem',
-                  background: 'var(--bg-primary)',
-                  color: 'var(--text-primary)',
+                  background: 'var(--bg-white)',
+                  color: 'var(--text-dark)',
+                  cursor: 'pointer',
                 }}
               >
                 <option value="AGRICULTOR">Agricultor</option>
@@ -331,8 +334,8 @@ function Cadastro() {
                     border: `1px solid ${errors.senha ? '#f44336' : 'var(--border-color)'}`,
                     borderRadius: '6px',
                     fontSize: '1rem',
-                    background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)',
+                    background: 'var(--bg-white)',
+                    color: 'var(--text-dark)',
                   }}
                   placeholder="Mínimo 6 caracteres"
                 />
@@ -375,8 +378,8 @@ function Cadastro() {
                     border: `1px solid ${errors.confirmarSenha ? '#f44336' : 'var(--border-color)'}`,
                     borderRadius: '6px',
                     fontSize: '1rem',
-                    background: 'var(--bg-primary)',
-                    color: 'var(--text-primary)',
+                    background: 'var(--bg-white)',
+                    color: 'var(--text-dark)',
                   }}
                   placeholder="Repita a senha"
                 />
@@ -469,17 +472,68 @@ function Cadastro() {
               {loading ? 'Criando conta...' : 'Criar Conta'}
             </button>
 
+            {successMessage && (
+              <div
+                style={{
+                  padding: '1rem',
+                  background: '#e8f5e9',
+                  color: '#2e7d32',
+                  borderRadius: '6px',
+                  fontSize: '0.95rem',
+                  marginTop: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  border: '1px solid #66bb6a',
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>{successMessage}</span>
+              </div>
+            )}
+
             {errors.submit && (
               <div
                 style={{
-                  padding: '0.75rem',
+                  padding: '1rem',
                   background: '#ffebee',
                   color: '#c62828',
                   borderRadius: '6px',
-                  fontSize: '0.9rem',
+                  fontSize: '0.95rem',
+                  marginTop: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  border: '1px solid #ef5350',
                 }}
               >
-                {errors.submit}
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <span>{errors.submit}</span>
               </div>
             )}
           </form>

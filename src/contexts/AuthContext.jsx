@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
 
   // Carrega o usuário e token do localStorage ao inicializar
   useEffect(() => {
-    // Limpa dados inválidos primeiro
     cleanInvalidData();
 
     const storedToken = localStorage.getItem('token');
@@ -25,11 +24,11 @@ export const AuthProvider = ({ children }) => {
 
     if (storedToken && storedUser && isValidToken()) {
       try {
+        const parsedUser = JSON.parse(storedUser);
         setToken(storedToken);
-        setUser(JSON.parse(storedUser));
+        setUser(parsedUser);
       } catch (error) {
         console.error('Erro ao carregar dados do localStorage:', error);
-        // Limpa dados inválidos
         localStorage.removeItem('token');
         localStorage.removeItem('user');
       }
@@ -68,15 +67,16 @@ export const AuthProvider = ({ children }) => {
 
   /**
    * Realiza o login do usuário com credentials ou dados diretos (OAuth2)
-   * @param {Object} credentialsOrData - Pode ser {email, password} ou userData direto
+   * @param {Object} credentialsOrData - Pode ser {email, senha} ou userData direto
    */
   const login = async (credentialsOrData) => {
     try {
-      if (!credentialsOrData.password) {
-        localStorage.setItem('user', JSON.stringify(credentialsOrData));
-        setUser(credentialsOrData);
-
-        return { success: true, data: { user: credentialsOrData } };
+      // Se não tem email nem senha, é um objeto de usuário direto (OAuth2)
+      if (!credentialsOrData.email || (!credentialsOrData.senha && !credentialsOrData.password)) {
+        const userInfo = credentialsOrData;
+        localStorage.setItem('user', JSON.stringify(userInfo));
+        setUser(userInfo);
+        return { success: true, data: { user: userInfo } };
       }
 
       const response = await authService.login(credentialsOrData);
@@ -102,9 +102,11 @@ export const AuthProvider = ({ children }) => {
         }
       }
 
+      // Salvar no localStorage de forma síncrona
       localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(userInfo));
 
+      // Atualizar estado imediatamente
       setToken(accessToken);
       setUser(userInfo);
 
