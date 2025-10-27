@@ -44,19 +44,19 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authService.register(userData);
 
-      const { token, user } = response.data || response;
+      const { accessToken, user } = response.data || response;
 
-      if (!token || !user) {
+      if (!accessToken || !user) {
         return { success: false, error: 'Resposta inválida do servidor' };
       }
 
-      localStorage.setItem('token', token);
+      localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(user));
 
-      setToken(token);
+      setToken(accessToken);
       setUser(user);
 
-      return { success: true, data: { token, user } };
+      return { success: true, data: { token: accessToken, user } };
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||

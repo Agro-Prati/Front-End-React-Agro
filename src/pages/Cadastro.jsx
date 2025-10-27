@@ -15,7 +15,7 @@ function Cadastro() {
     senha: '',
     confirmarSenha: '',
     telefone: '',
-    tipoUsuario: 'produtor',
+    tipoUsuario: 'AGRICULTOR',
     termos: false,
   });
 
@@ -297,10 +297,11 @@ function Cadastro() {
                   color: 'var(--text-primary)',
                 }}
               >
-                <option value="produtor">Produtor Rural</option>
-                <option value="tecnico">Técnico Agrícola</option>
-                <option value="empresa">Empresa</option>
-                <option value="estudante">Estudante</option>
+                <option value="AGRICULTOR">Agricultor</option>
+                <option value="AGRONOMO">Agrônomo</option>
+                <option value="VETERINARIO">Veterinário</option>
+                <option value="ZOOTECNISTA">Zootecnista</option>
+                <option value="ESTUDANTE">Estudante</option>
               </select>
             </div>
 
