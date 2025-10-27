@@ -558,6 +558,44 @@
   border-color: var(--text-light);
 }
 
+/* ==================== Dark Theme Support ==================== */
+:root[data-theme='dark'] .profile-modal-content {
+  background: var(--bg-white);
+}
+
+:root[data-theme='dark'] .profile-modal-title {
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .profile-form-label {
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .profile-form-input,
+:root[data-theme='dark'] .profile-form-textarea,
+:root[data-theme='dark'] select.profile-form-input {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+  color: var(--text-dark);
+}
+
+:root[data-theme='dark'] .profile-form-input:focus,
+:root[data-theme='dark'] .profile-form-textarea:focus,
+:root[data-theme='dark'] select.profile-form-input:focus {
+  border-color: var(--primary-color);
+  background: #2a2a2a;
+}
+
+:root[data-theme='dark'] .profile-form-input::placeholder,
+:root[data-theme='dark'] .profile-form-textarea::placeholder {
+  color: #999;
+}
+
+:root[data-theme='dark'] select.profile-form-input option {
+  background: #2a2a2a;
+  color: var(--text-dark);
+}
+
 /* ==================== Responsive ==================== */
 @media (max-width: 768px) {
   .profile-header {
