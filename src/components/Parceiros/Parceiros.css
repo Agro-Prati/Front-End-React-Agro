@@ -24,6 +24,13 @@
   justify-items: center;
 }
 
+.parceiro-logo img {
+  max-width: 120px; /* Defina a largura máxima que desejar */
+  height: auto;     /* Mantém a proporção da imagem */
+  display: block;   /* Ajuda a evitar espaços extras */
+  margin: 0 auto;   /* Centraliza a imagem se o contêiner for maior */
+}
+
 @media (max-width: 768px) {
   .parceiros-logos {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -81,15 +88,12 @@
 }
 
 .parceiro-logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+ 
 }
 
 @media (max-width: 768px) {

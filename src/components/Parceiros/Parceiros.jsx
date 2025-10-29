@@ -1,48 +1,55 @@
 import React from 'react';
 import './Parceiros.css';
+import sicrediLogo from '../../assets/parceiros/logo-sicredi.png'; 
+import bayerLogo from '../../assets/parceiros/logo-bayer.png';
+import bancoDoBrasilLogo from '../../assets/parceiros/logo-banco-do-brasil.png';
+import b3Logo from '../../assets/parceiros/logo-B3.png';
+import embrapaLogo from '../../assets/parceiros/logo-embrapa.png';
+import ufprLogo from '../../assets/parceiros/logo-ufpr.png';
+import utfprLogo from '../../assets/parceiros/logo-utfpr.png';
 
 const Parceiros = () => {
   const parceiros = [
     {
       nome: 'Sicredi',
       tipo: 'Cooperativa Financeira',
-      logo: '🏦', // Placeholder - será substituído por logo real
+      logo: sicrediLogo, 
       descricao: 'Parceria para soluções financeiras agrícolas',
     },
     {
       nome: 'Bayer',
       tipo: 'Agronegócio',
-      logo: '🌱', // Placeholder - será substituído por logo real
+      logo: bayerLogo, 
       descricao: 'Inovação em sementes e proteção de cultivos',
     },
     {
       nome: 'Banco do Brasil',
       tipo: 'Instituição Financeira',
-      logo: '🏛️', // Placeholder - será substituído por logo real
+      logo: bancoDoBrasilLogo, 
       descricao: 'Crédito rural e apoio ao agronegócio',
     },
     {
       nome: 'B3',
       tipo: 'Bolsa de Valores',
-      logo: '📈', // Placeholder - será substituído por logo real
+      logo: b3Logo, 
       descricao: 'Negociação de contratos agrícolas futuros',
     },
     {
       nome: 'Embrapa',
       tipo: 'Pesquisa Agropecuária',
-      logo: '🔬', // Placeholder - será substituído por logo real
+      logo: embrapaLogo, 
       descricao: 'Centro de pesquisa e inovação agrícola',
     },
     {
       nome: 'UFPR',
       tipo: 'Universidade',
-      logo: '🎓', // Placeholder - será substituído por logo real
+      logo: ufprLogo, 
       descricao: 'Pesquisa e formação em agronomia',
     },
     {
       nome: 'UTFPR',
       tipo: 'Universidade',
-      logo: '📚', // Placeholder - será substituído por logo real
+      logo: utfprLogo, 
       descricao: 'Tecnologia e inovação para o agronegócio',
     },
   ];
@@ -59,7 +66,7 @@ const Parceiros = () => {
           {parceiros.map((parceiro, index) => (
             <div key={index} className="parceiro-logo-item" title={parceiro.descricao}>
               <div className="parceiro-logo">
-                <span className="logo-icon">{parceiro.logo}</span>
+              <img src={parceiro.logo} alt={`Logo de ${parceiro.nome}`} />
               </div>
               <div className="parceiro-info">
                 <h4 className="parceiro-nome">{parceiro.nome}</h4>
