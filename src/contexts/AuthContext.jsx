@@ -67,10 +67,31 @@ export const AuthProvider = ({ children }) => {
 
   /**
    * Realiza o login do usuário com credentials ou dados diretos (OAuth2)
-   * @param {Object} credentialsOrData - Pode ser {email, senha} ou userData direto
+   * @param {Object} credentialsOrData - Pode ser:
+   *   - {email, senha} - Login tradicional
+   *   - {token, user} - Login com Google (dados já validados)
+   *   - userData direto - OAuth2 flow
    */
   const login = async (credentialsOrData) => {
     try {
+      // Se já tem token e user, é login do Google (dados já validados pelo backend)
+      if (credentialsOrData.token && credentialsOrData.user) {
+        const { token: accessToken, user: userInfo } = credentialsOrData;
+        
+        console.log('🔐 AuthContext: Login com dados pré-validados (Google)');
+        
+        // Salvar no localStorage de forma síncrona
+        localStorage.setItem('token', accessToken);
+        localStorage.setItem('user', JSON.stringify(userInfo));
+
+        // Atualizar estado imediatamente
+        setToken(accessToken);
+        setUser(userInfo);
+
+        console.log('✓ AuthContext: Estado atualizado com sucesso!');
+        return { success: true, data: { token: accessToken, user: userInfo } };
+      }
+
       // Se não tem email nem senha, é um objeto de usuário direto (OAuth2)
       if (!credentialsOrData.email || (!credentialsOrData.senha && !credentialsOrData.password)) {
         const userInfo = credentialsOrData;
@@ -79,6 +100,8 @@ export const AuthProvider = ({ children }) => {
         return { success: true, data: { user: userInfo } };
       }
 
+      // Login tradicional com email e senha
+      console.log('🔐 AuthContext: Login tradicional (email/senha)');
       const response = await authService.login(credentialsOrData);
 
       const accessToken = response.accessToken || response.token;

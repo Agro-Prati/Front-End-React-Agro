@@ -62,24 +62,37 @@ function Login() {
     setSuccessMessage('');
 
     try {
+      console.log('🔐 Iniciando login com Google...');
       const response = await authService.loginWithGoogle(credentialResponse.credential);
+      
+      console.log('✓ Resposta do backend recebida:', response);
 
       const token = response.accessToken || response.token;
       const user = response.user;
 
-      if (token && user) {
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
+      if (!token || !user) {
+        console.error('❌ Resposta inválida:', { token: !!token, user: !!user });
+        setError('Resposta inválida do servidor');
+        return;
+      }
 
+      console.log('✓ Token e usuário válidos, atualizando contexto...');
+      
+      // Atualizar o contexto de autenticação
+      const result = await login({ token, user });
+
+      if (result.success) {
+        console.log('✓ Contexto atualizado com sucesso!');
         setSuccessMessage('Login com Google realizado com sucesso! Redirecionando...');
+        
         setTimeout(() => {
           navigate('/', { replace: true });
         }, 800);
       } else {
-        setError('Resposta inválida do servidor');
+        setError(result.error || 'Erro ao atualizar contexto de autenticação');
       }
     } catch (err) {
-      console.error('Erro ao fazer login com Google:', err);
+      console.error('❌ Erro ao fazer login com Google:', err);
       setError(err.response?.data?.message || 'Erro ao fazer login com Google. Tente novamente.');
     } finally {
       setLoading(false);
