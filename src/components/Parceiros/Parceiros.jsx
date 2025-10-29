@@ -2,7 +2,7 @@ import React from 'react';
 import './Parceiros.css';
 import sicrediLogo from '../../assets/parceiros/logo-sicredi.png'; 
 import bayerLogo from '../../assets/parceiros/logo-bayer.png';
-import bancoDoBrasilLogo from '../../assets/parceiros/logo-banco-do-brasil.png';;
+import bancoDoBrasilLogo from '../../assets/parceiros/logo-banco-do-brasil.png';
 import b3Logo from '../../assets/parceiros/logo-B3.png';
 import embrapaLogo from '../../assets/parceiros/logo-embrapa.png';
 import ufprLogo from '../../assets/parceiros/logo-ufpr.png';
