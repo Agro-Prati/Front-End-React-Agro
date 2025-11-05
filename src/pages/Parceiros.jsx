@@ -1,6 +1,12 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
+import logoBancoDoBrasil from '../assets/parceiros/logo-banco-do-brasil.png';
+import logoBayer from '../assets/parceiros/logo-bayer.png';
+import logoSicredi from '../assets/parceiros/logo-sicredi.png';
+import logoUfpr from '../assets/parceiros/logo-ufpr.png';
+import logoUtfpr from '../assets/parceiros/logo-utfpr.png';
+
 
 const categoriasParceiros = [
   {
