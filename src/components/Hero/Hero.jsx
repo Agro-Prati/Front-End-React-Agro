@@ -13,7 +13,7 @@ const Hero = ({ onOpenChat, onScrollTo }) => {
 
   return (
     <section id="home" className="hero">
-      <div className="hero-container">
+      <div className="container">
         <div className="hero-content">
           <h1 className="hero-title">
             Transforme sua Agricultura com{' '}

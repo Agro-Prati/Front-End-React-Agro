@@ -3,26 +3,214 @@
 }
 
 .login-btn {
-  background: var(--primary-color);
-  color: var(--text-white);
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 24px;
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 44px;
+  min-height: 40px;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+  z-index: -1;
 }
 
 .login-btn:hover {
-  background: var(--primary-dark);
+  color: var(--text-white);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 168, 83, 0.3);
+}
+
+.login-btn:hover::before {
+  width: 100%;
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* Container do avatar */
+.login-avatar-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  position: relative;
+  z-index: var(--z-popover);
+}
+
+/* Botão do avatar */
+.login-avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: var(--bg-white);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.login-avatar-btn:hover {
+  transform: scale(1.05);
+  border-color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-avatar-btn:active {
+  transform: scale(0.98);
+}
+
+/* Imagem do avatar (Google) */
+.login-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Iniciais do avatar (credenciais) */
+.login-avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Menu dropdown */
+.login-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-overlay);
+  background: transparent;
+}
+
+.login-menu-dropdown {
+  position: fixed;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hover);
+  min-width: 220px;
+  z-index: var(--z-modal);
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-menu-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-light);
+}
+
+.login-menu-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.login-menu-email {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.login-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-menu-item:hover {
+  background: var(--bg-light);
+}
+
+.login-menu-item svg {
+  flex-shrink: 0;
+}
+
+.login-menu-logout {
+  color: #d32f2f;
+  border-top: 1px solid var(--border-color);
+}
+
+.login-menu-logout:hover {
+  background: #ffebee;
 }
 
 /* Responsividade mobile */
 @media (max-width: 768px) {
   .login-btn {
     padding: 0.55rem 0.875rem;
+    font-size: 0.95rem;
+  }
+
+  .login-avatar-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .login-avatar-initials {
     font-size: 0.95rem;
   }
 }
@@ -32,5 +220,14 @@
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
     min-height: 40px;
+  }
+
+  .login-avatar-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .login-avatar-initials {
+    font-size: 0.875rem;
   }
 }

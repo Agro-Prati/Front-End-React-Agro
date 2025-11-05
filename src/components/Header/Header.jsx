@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import ThemeToggle from '../../components/ui/ThemeToggle/ThemeToggle';
 import LoginButton from '../../components/ui/LoginButton/LoginButton';
-import ProfileButton from '../../components/ui/ProfileButton/ProfileButton';
 import Nav from '../Nav/Nav';
 import folha from '../../assets/folha.png';
 
@@ -49,7 +48,7 @@ export default function Header({ menuItems = defaultMenu }) {
   return (
     <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
       <nav className="navbar">
-        <div className="nav-container">
+        <div className="container">
           <Link to="/" className="nav-logo-link">
             <div className="nav-logo">
               <img
@@ -64,7 +63,6 @@ export default function Header({ menuItems = defaultMenu }) {
           <Nav menuItems={menuItems} onNavigate={(href) => handleNavClick(href)} />
           <div className="header-actions">
             <ThemeToggle />
-            <ProfileButton />
             <LoginButton />
           </div>
         </div>

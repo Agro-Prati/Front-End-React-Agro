@@ -7,6 +7,7 @@ import Chatbot from '../components/Chatbot/Chatbot';
 import { useAuth } from '../contexts/useAuth';
 import authService from '../services/authService';
 import folha from '../assets/folha.png';
+import './Login.css';
 
 function Login() {
   const navigate = useNavigate();
@@ -106,53 +107,23 @@ function Login() {
   return (
     <>
       <Header />
-      <main
-        style={{
-          minHeight: 'calc(100vh - 80px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '2rem',
-          paddingTop: 'calc(80px + 2rem)',
-          background: 'var(--bg-light)',
-        }}
-      >
-        <div
-          style={{
-            background: 'var(--bg-white)',
-            padding: '2rem',
-            borderRadius: '12px',
-            boxShadow: 'var(--shadow)',
-            width: '100%',
-            maxWidth: '400px',
-          }}
-        >
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+      <main className="auth-page">
+        <div className="auth-card">
+          <div className="auth-header">
             <img
               src={folha}
               alt="Agro+Prati Logo"
-              style={{ height: '48px', width: '48px', marginBottom: '1rem' }}
+              className="auth-logo"
             />
-            <h1 style={{ color: 'var(--text-dark)', margin: '0' }}>Entrar na sua conta</h1>
-            <p style={{ color: 'var(--text-light)', margin: '0.5rem 0 0 0' }}>
+            <h1 className="auth-title">Entrar na sua conta</h1>
+            <p className="auth-subtitle">
               Acesse sua conta Agro+Prati
             </p>
           </div>
 
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-          >
-            <div>
-              <label
-                htmlFor="email"
-                style={{
-                  display: 'block',
-                  marginBottom: '0.5rem',
-                  color: 'var(--text-dark)',
-                  fontWeight: '500',
-                }}
-              >
+          <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">
                 Email
               </label>
               <input
@@ -162,29 +133,13 @@ function Login() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: '6px',
-                  fontSize: '1rem',
-                  background: 'var(--bg-white)',
-                  color: 'var(--text-dark)',
-                }}
+                className="form-input"
                 placeholder="seu@email.com"
               />
             </div>
 
-            <div>
-              <label
-                htmlFor="senha"
-                style={{
-                  display: 'block',
-                  marginBottom: '0.5rem',
-                  color: 'var(--text-dark)',
-                  fontWeight: '500',
-                }}
-              >
+            <div className="form-group">
+              <label htmlFor="senha" className="form-label">
                 Senha
               </label>
               <input
@@ -194,40 +149,23 @@ function Login() {
                 value={formData.senha}
                 onChange={handleChange}
                 required
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: '6px',
-                  fontSize: '1rem',
-                  background: 'var(--bg-white)',
-                  color: 'var(--text-dark)',
-                }}
+                className="form-input"
                 placeholder="Sua senha"
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <label
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}
-              >
+            <div className="form-checkbox-row">
+              <label className="form-checkbox-label">
                 <input
                   type="checkbox"
                   name="lembrar"
                   checked={formData.lembrar}
                   onChange={handleChange}
-                  style={{ margin: 0 }}
+                  className="form-checkbox"
                 />
                 Lembrar-me
               </label>
-              <Link
-                to="/recuperar-senha"
-                style={{
-                  color: 'var(--primary-color)',
-                  textDecoration: 'none',
-                  fontSize: '0.9rem',
-                }}
-              >
+              <Link to="/recuperar-senha" className="login-forgot-link">
                 Esqueceu a senha?
               </Link>
             </div>
@@ -235,120 +173,27 @@ function Login() {
             <button
               type="submit"
               disabled={loading}
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                background: loading ? '#ccc' : 'var(--primary-color)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: loading ? 'not-allowed' : 'pointer',
-                transition: 'background 0.3s ease',
-              }}
-              onMouseOver={(e) => !loading && (e.target.style.background = 'var(--primary-dark)')}
-              onMouseOut={(e) => !loading && (e.target.style.background = 'var(--primary-color)')}
+              className="auth-submit-btn"
             >
               {loading ? 'Entrando...' : 'Entrar'}
             </button>
 
             {successMessage && (
-              <div
-                style={{
-                  padding: '1rem',
-                  background: '#e8f5e9',
-                  color: '#2e7d32',
-                  borderRadius: '6px',
-                  fontSize: '0.95rem',
-                  marginTop: '1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  border: '1px solid #66bb6a',
-                }}
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <span>{successMessage}</span>
+              <div className="auth-alert auth-alert-success">
+                {successMessage}
               </div>
             )}
 
             {error && (
-              <div
-                style={{
-                  padding: '1rem',
-                  background: '#ffebee',
-                  color: '#c62828',
-                  borderRadius: '6px',
-                  fontSize: '0.95rem',
-                  marginTop: '1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  border: '1px solid #ef5350',
-                }}
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="15" y1="9" x2="9" y2="15"></line>
-                  <line x1="9" y1="9" x2="15" y2="15"></line>
-                </svg>
-                <span>{error}</span>
+              <div className="auth-alert auth-alert-error">
+                {error}
               </div>
             )}
           </form>
 
-          <div style={{ textAlign: 'center', margin: '1.5rem 0', color: 'var(--text-light)' }}>
-            <span
-              style={{
-                background: 'var(--bg-white)',
-                padding: '0 1rem',
-                position: 'relative',
-                zIndex: 1,
-              }}
-            >
-              ou
-            </span>
-            <div
-              style={{
-                height: '1px',
-                background: 'var(--border-color)',
-                marginTop: '-0.7rem',
-                position: 'relative',
-                zIndex: 0,
-              }}
-            ></div>
-          </div>
+          <div className="auth-divider">ou</div>
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '0.5rem',
-            }}
-          >
+          <div className="auth-google-wrapper">
             <GoogleLogin
               onSuccess={handleGoogleLoginSuccess}
               onError={handleGoogleLoginError}
@@ -360,37 +205,9 @@ function Login() {
             />
           </div>
 
-          <div
-            style={{
-              textAlign: 'center',
-              marginTop: '1.5rem',
-              paddingTop: '1.5rem',
-              borderTop: '1px solid var(--border-color)',
-            }}
-          >
-            <p style={{ color: 'var(--text-light)', margin: '0 0 1rem 0' }}>Não tem uma conta?</p>
-            <Link
-              to="/cadastro"
-              style={{
-                display: 'inline-block',
-                padding: '0.75rem 1.5rem',
-                background: 'transparent',
-                color: 'var(--primary-color)',
-                border: '2px solid var(--primary-color)',
-                borderRadius: '6px',
-                textDecoration: 'none',
-                fontWeight: '600',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseOver={(e) => {
-                e.target.style.background = 'var(--primary-color)';
-                e.target.style.color = 'white';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.background = 'transparent';
-                e.target.style.color = 'var(--primary-color)';
-              }}
-            >
+          <div className="auth-footer">
+            <p>Não tem uma conta?</p>
+            <Link to="/cadastro" className="auth-footer-link">
               Criar conta
             </Link>
           </div>

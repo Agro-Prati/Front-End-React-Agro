@@ -24,7 +24,7 @@ function OAuth2Callback() {
         .get('/api/auth/me')
         .then((response) => {
           const userData = response.data;
-          console.log('✅ [OAuth2Callback] Usuário autenticado:', userData);
+          //console.log('✅ [OAuth2Callback] Usuário autenticado:', userData);
 
           // Atualiza o contexto com os dados do usuário
           login(userData);

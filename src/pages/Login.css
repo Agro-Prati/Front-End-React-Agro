@@ -1,0 +1,19 @@
+/* ===================================
+   ESTILOS ESPECÍFICOS - LOGIN
+   =================================== */
+
+/* Import do CSS compartilhado */
+@import './Auth.css';
+
+/* Link de esqueceu senha */
+.login-forgot-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.login-forgot-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}

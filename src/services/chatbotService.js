@@ -165,14 +165,14 @@ const getRandomMessage = (messagesArray) => {
 export const sendChatMessage = async (message) => {
   // Se usar respostas hardcoded (modo MVP)
   if (!USE_REAL_CHATBOT) {
-    console.log('🤖 Usando respostas hardcoded (VITE_USE_REAL_CHATBOT=false)');
+    //console.log('🤖 Usando respostas hardcoded (VITE_USE_REAL_CHATBOT=false)');
     // Simular delay de rede
     await new Promise((resolve) => setTimeout(resolve, 800));
     return generateHardcodedResponse(message);
   }
 
   // Usar API real do Gemini
-  console.log('🤖 Usando API Gemini real (VITE_USE_REAL_CHATBOT=true)');
+  //console.log('🤖 Usando API Gemini real (VITE_USE_REAL_CHATBOT=true)');
   try {
     const response = await fetch(`${CHATBOT_API_URL}/ask`, {
       method: 'POST',
@@ -202,7 +202,7 @@ export const sendChatMessage = async (message) => {
     console.error('❌ Erro ao chamar API do chatbot:', error);
 
     // Fallback para respostas hardcoded em caso de erro
-    console.log('⚠️ Usando fallback para respostas hardcoded');
+   //console.log('⚠️ Usando fallback para respostas hardcoded');
     return generateHardcodedResponse(message);
   }
 };
@@ -219,7 +219,7 @@ export const generatePlanoSafra = async (culturas) => {
 
   // Se usar respostas hardcoded
   if (!USE_REAL_CHATBOT) {
-    console.log('🌾 Gerando plano de safra hardcoded');
+    //console.log('🌾 Gerando plano de safra hardcoded');
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
     return `# 🌾 Plano de Safra Personalizado
@@ -255,7 +255,7 @@ ${
   }
 
   // Usar API real
-  console.log('🌾 Gerando plano de safra com IA real');
+  //console.log('🌾 Gerando plano de safra com IA real');
   try {
     const response = await fetch(`${CHATBOT_API_URL}/planner`, {
       method: 'POST',
@@ -305,7 +305,7 @@ export const calcularAposentadoria = async (dados) => {
 
   // Se usar respostas hardcoded
   if (!USE_REAL_CHATBOT) {
-    console.log('📊 Calculando aposentadoria (hardcoded)');
+    //console.log('📊 Calculando aposentadoria (hardcoded)');
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const idadeAposentadoria = sexo === 'masculino' ? 60 : 55;
@@ -350,7 +350,7 @@ ${tempoFaltante > 0 ? `- ${tempoFaltante} anos de tempo de contribuição` : ''}
   }
 
   // Usar API real
-  console.log('📊 Calculando aposentadoria com IA real');
+  //console.log('📊 Calculando aposentadoria com IA real');
   try {
     const response = await fetch(`${CHATBOT_API_URL}/calculate_retirement`, {
       method: 'POST',

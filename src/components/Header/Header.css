@@ -1,13 +1,13 @@
 /* Header styles (migrado do protótipo) */
 .header {
   background: var(--bg-white, #ffffff);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
+  z-index: var(--z-header);
+  transition: var(--transition);
 }
 
 .header-scrolled {
@@ -26,26 +26,11 @@
   }
 }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Usar .container global com customização para navbar */
+.navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-/* Melhor espaçamento em mobile */
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 0 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-container {
-    padding: 0 12px;
-  }
 }
 
 .nav-logo {
