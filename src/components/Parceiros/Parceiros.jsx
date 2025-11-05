@@ -2,11 +2,13 @@ import React from 'react';
 import './Parceiros.css';
 import sicrediLogo from '../../assets/parceiros/logo-sicredi.png'; 
 import bayerLogo from '../../assets/parceiros/logo-bayer.png';
-import bancoDoBrasilLogo from '../../assets/parceiros/logo-banco-do-brasil.png';
+import bancoDoBrasilLogo from '../../assets/parceiros/bb-logo.jpg';
 import b3Logo from '../../assets/parceiros/logo-B3.png';
 import embrapaLogo from '../../assets/parceiros/logo-embrapa.png';
 import ufprLogo from '../../assets/parceiros/logo-ufpr.png';
 import utfprLogo from '../../assets/parceiros/logo-utfpr.png';
+import pucprLogo from '../../assets/parceiros/pucpr-logo.jpg';
+import pucrsLogo from '../../assets/parceiros/pucrs-logo.png';
 
 const Parceiros = () => {
   const parceiros = [
@@ -52,6 +54,18 @@ const Parceiros = () => {
       logo: utfprLogo, 
       descricao: 'Tecnologia e inovação para o agronegócio',
     },
+    {
+      nome: 'PUCPR',
+      tipo: 'Universidade',
+      logo: pucprLogo, 
+      descricao: 'Excelência em ensino e pesquisa agropecuária',
+    },
+    {
+      nome: 'PUCRS',
+      tipo: 'Universidade',
+      logo: pucrsLogo, 
+      descricao: 'Pesquisa e desenvolvimento em ciências agrárias',
+    },
   ];
 
   return (
@@ -78,7 +92,7 @@ const Parceiros = () => {
 
         <div className="parceiros-stats">
           <div className="stat-item">
-            <div className="stat-number">7+</div>
+            <div className="stat-number">9+</div>
             <div className="stat-label">Parceiros Estratégicos</div>
           </div>
           <div className="stat-item">
