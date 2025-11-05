@@ -1,0 +1,8 @@
+/* ===================================
+   ESTILOS ESPECÍFICOS - CADASTRO
+   =================================== */
+
+/* Import do CSS compartilhado */
+@import './Auth.css';
+
+/* Ajustes específicos do cadastro podem ir aqui */

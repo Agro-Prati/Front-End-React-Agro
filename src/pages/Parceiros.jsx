@@ -14,9 +14,9 @@ const categoriasParceiros = [
     titulo: "🏢 Empresas de Agronegócio",
     descricao: "Parceria com grandes players do setor para desenvolvimento conjunto de soluções.",
     parceiros: [
-      { nome: "Banco do Brasil", logo: "/src/assets/parceiros/logo-banco-do-brasil.png" },
-      { nome: "Bayer", logo: "/src/assets/parceiros/logo-bayer.png" },
-      { nome: "Sicredi", logo: "/src/assets/parceiros/logo-sicredi.png" }
+      { nome: "Banco do Brasil", logo: logoBancoDoBrasil },
+      { nome: "Bayer", logo: logoBayer },
+      { nome: "Sicredi", logo: logoSicredi }
     ]
   },
   {
@@ -24,9 +24,8 @@ const categoriasParceiros = [
     titulo: "🎓 Universidades",
     descricao: "Colaboração com instituições de ensino para pesquisa e desenvolvimento.",
     parceiros: [
-      { nome: "UFPR", logo: "/src/assets/parceiros/logo-ufpr.png" },
-      { nome: "UTFPR", logo: "/src/assets/parceiros/logo-utfpr.png" }
-      
+      { nome: "UFPR", logo: logoUfpr },
+      { nome: "UTFPR", logo: logoUtfpr }
     ]
   },
   

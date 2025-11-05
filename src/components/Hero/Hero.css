@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero {
-  padding: 120px 0 80px;
+  padding: 120px 0 var(--spacing-section);
   background: linear-gradient(135deg, var(--bg-light) 0%, #e8f5e8 100%);
   min-height: 100vh;
   display: flex;
@@ -10,38 +10,23 @@
 /* Melhor padding em mobile */
 @media (max-width: 768px) {
   .hero {
-    padding: 100px 0 60px;
+    padding: 100px 0 var(--spacing-section-mobile);
     min-height: auto;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
-    padding: 80px 0 40px;
+    padding: 80px 0 var(--spacing-xl);
   }
 }
 
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Hero usa .container global com customização */
+.hero .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: var(--spacing-3xl);
   align-items: center;
-}
-
-/* Responsividade do container */
-@media (max-width: 768px) {
-  .hero-container {
-    padding: 0 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-container {
-    padding: 0 12px;
-  }
 }
 
 .hero-content {
@@ -334,9 +319,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-container {
+  .hero .container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--spacing-xl);
   }
 
   .hero-title {
@@ -345,7 +330,7 @@
 
   .hero-stats {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacing-md);
   }
 
   .hero-buttons {
